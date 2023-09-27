@@ -8,6 +8,9 @@ namespace BirdCageShop.BusinessLogic.Enums
 {
     public enum UserRoleEnum
     {
-        Customer =1,
+        Customer = 1,
+        Staff = 2,
+        Manager = 3,
+        Admin = 4,
     }
 }

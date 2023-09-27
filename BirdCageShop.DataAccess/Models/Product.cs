@@ -13,7 +13,6 @@ namespace BirdCageShop.DataAccess.Models
         }
 
         public string ProductId { get; set; } = null!;
-        public string? CategoryId { get; set; }
         public string? ProductName { get; set; }
         public string? BirdType { get; set; }
         public string? Model { get; set; }
