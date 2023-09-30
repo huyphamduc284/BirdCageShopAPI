@@ -1,6 +1,7 @@
 
 
 using BirdCageShop.BusinessLogic.Services;
+using BirdCageShop.DataAccess.Models;
 using Ecommerce.BusinessLogic.RequestModels.Voucher;
 using Ecommerce.BusinessLogic.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,7 @@ namespace BirdCageShop.Presentation.Controllers
         public ActionResult<VoucherViewModel> CreateVoucher(CreateVoucherRequestModel voucherCreate)
         {
             var voucherCreated = _voucherService.CreateVoucher(voucherCreate);
-
+       
             if (voucherCreated == null)
             {
                 return NotFound("");
@@ -44,7 +45,7 @@ namespace BirdCageShop.Presentation.Controllers
             {
                 return NotFound("");
             }
-            return voucherList;
+            return voucherList; 
         }
 
         [MapToApiVersion("1")]

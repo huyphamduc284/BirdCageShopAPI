@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop\\BirdCageShop.Presentation.csproj": {}
+    "C:\\Users\\ADMIN\\Desktop\\BirdCageShopAPI\\BirdCageShop\\BirdCageShop.Presentation.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop.BusinessLogic\\BirdCageShop.BusinessLogic.csproj": {
+    "C:\\Users\\ADMIN\\Desktop\\BirdCageShopAPI\\BirdCageShop.BusinessLogic\\BirdCageShop.BusinessLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop.BusinessLogic\\BirdCageShop.BusinessLogic.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\BirdCageShopAPI\\BirdCageShop.BusinessLogic\\BirdCageShop.BusinessLogic.csproj",
         "projectName": "BirdCageShop.BusinessLogic",
-        "projectPath": "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop.BusinessLogic\\BirdCageShop.BusinessLogic.csproj",
-        "packagesPath": "C:\\Users\\yoga\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop.BusinessLogic\\obj\\",
+        "projectPath": "C:\\Users\\ADMIN\\Desktop\\BirdCageShopAPI\\BirdCageShop.BusinessLogic\\BirdCageShop.BusinessLogic.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ADMIN\\Desktop\\BirdCageShopAPI\\BirdCageShop.BusinessLogic\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\yoga\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,15 +22,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop.DataAccess\\BirdCageShop.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop.DataAccess\\BirdCageShop.DataAccess.csproj"
+              "C:\\Users\\ADMIN\\Desktop\\BirdCageShopAPI\\BirdCageShop.DataAccess\\BirdCageShop.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\ADMIN\\Desktop\\BirdCageShopAPI\\BirdCageShop.DataAccess\\BirdCageShop.DataAccess.csproj"
               }
             }
           }
@@ -78,21 +73,17 @@
         }
       }
     },
-    "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop.DataAccess\\BirdCageShop.DataAccess.csproj": {
+    "C:\\Users\\ADMIN\\Desktop\\BirdCageShopAPI\\BirdCageShop.DataAccess\\BirdCageShop.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop.DataAccess\\BirdCageShop.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\BirdCageShopAPI\\BirdCageShop.DataAccess\\BirdCageShop.DataAccess.csproj",
         "projectName": "BirdCageShop.DataAccess",
-        "projectPath": "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop.DataAccess\\BirdCageShop.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\yoga\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop.DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\ADMIN\\Desktop\\BirdCageShopAPI\\BirdCageShop.DataAccess\\BirdCageShop.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ADMIN\\Desktop\\BirdCageShopAPI\\BirdCageShop.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\yoga\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -100,7 +91,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -168,21 +158,17 @@
         }
       }
     },
-    "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop\\BirdCageShop.Presentation.csproj": {
+    "C:\\Users\\ADMIN\\Desktop\\BirdCageShopAPI\\BirdCageShop\\BirdCageShop.Presentation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop\\BirdCageShop.Presentation.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\BirdCageShopAPI\\BirdCageShop\\BirdCageShop.Presentation.csproj",
         "projectName": "BirdCageShop.Presentation",
-        "projectPath": "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop\\BirdCageShop.Presentation.csproj",
-        "packagesPath": "C:\\Users\\yoga\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop\\obj\\",
+        "projectPath": "C:\\Users\\ADMIN\\Desktop\\BirdCageShopAPI\\BirdCageShop\\BirdCageShop.Presentation.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ADMIN\\Desktop\\BirdCageShopAPI\\BirdCageShop\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\yoga\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -190,15 +176,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop.BusinessLogic\\BirdCageShop.BusinessLogic.csproj": {
-                "projectPath": "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop.BusinessLogic\\BirdCageShop.BusinessLogic.csproj"
+              "C:\\Users\\ADMIN\\Desktop\\BirdCageShopAPI\\BirdCageShop.BusinessLogic\\BirdCageShop.BusinessLogic.csproj": {
+                "projectPath": "C:\\Users\\ADMIN\\Desktop\\BirdCageShopAPI\\BirdCageShop.BusinessLogic\\BirdCageShop.BusinessLogic.csproj"
               }
             }
           }

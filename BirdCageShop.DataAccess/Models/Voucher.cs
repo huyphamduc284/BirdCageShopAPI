@@ -6,7 +6,7 @@ namespace BirdCageShop.DataAccess.Models
     public partial class Voucher
     {
         public Voucher()
-        {
+        {                                                                                          
             Products = new HashSet<Product>();
             Users = new HashSet<User>();
         }
