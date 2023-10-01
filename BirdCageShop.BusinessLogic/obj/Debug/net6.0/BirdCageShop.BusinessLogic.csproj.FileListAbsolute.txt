@@ -13,3 +13,6 @@ C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShop\BirdCageShop.BusinessLogic\o
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShop\BirdCageShop.BusinessLogic\obj\Debug\net6.0\refint\BirdCageShop.BusinessLogic.dll
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShop\BirdCageShop.BusinessLogic\obj\Debug\net6.0\BirdCageShop.BusinessLogic.pdb
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShop\BirdCageShop.BusinessLogic\obj\Debug\net6.0\ref\BirdCageShop.BusinessLogic.dll
+C:\Users\ADMIN\Source\Repos\huyphamduc284\BirdCageShopAPI\BirdCageShop.BusinessLogic\obj\Debug\net6.0\BirdCageShop.BusinessLogic.dll
+C:\Users\ADMIN\Source\Repos\huyphamduc284\BirdCageShopAPI\BirdCageShop.BusinessLogic\obj\Debug\net6.0\refint\BirdCageShop.BusinessLogic.dll
+C:\Users\ADMIN\Source\Repos\huyphamduc284\BirdCageShopAPI\BirdCageShop.BusinessLogic\obj\Debug\net6.0\BirdCageShop.BusinessLogic.pdb
