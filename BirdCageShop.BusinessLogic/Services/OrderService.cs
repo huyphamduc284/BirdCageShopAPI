@@ -12,9 +12,9 @@ namespace BirdCageShop.BusinessLogic.Services
     public interface IOrderService {
         public OrderViewModel CreateOrder(CreateOrderRequestModel orderCreate);
         public OrderViewModel UpdateOrder(UpdateOrderRequestModel orderUpdate);
-        public bool DeleteOrder(int idTmp);
+        public bool DeleteOrder(string idTmp);
         public List<OrderViewModel> GetAll();
-        public OrderViewModel GetById(int idTmp);
+        public OrderViewModel GetById(string idTmp);
     }
 
     public class OrderService : IOrderService {
@@ -42,6 +42,7 @@ namespace BirdCageShop.BusinessLogic.Services
             order.Method = orderCreate.Method;
             order.Rating = orderCreate.Rating;
             order.Comment = orderCreate.Comment;
+            
 
             _orderRepository.Create(order);
             _orderRepository.Save();
@@ -60,18 +61,22 @@ namespace BirdCageShop.BusinessLogic.Services
             return _mapper.Map<OrderViewModel>(order);
         }
 
-        public bool DeleteOrder(int idTmp)
+        public bool DeleteOrder(string idTmp)
         {
-            throw new NotImplementedException();
+            var order = _orderRepository.Get().SingleOrDefault(x => x.OrderId.Equals(idTmp));
+            if (order == null) return false;
+            _orderRepository.Delete(order);
+            _orderRepository.Save();
+            return true;
         }
 
         public List<OrderViewModel> GetAll() 
         {
-           var order = _orderRepository.Get().ToList();
-            return _mapper.Map<List<OrderViewModel>>(order);
+           var orders = _orderRepository.Get().ToList();
+            return _mapper.Map<List<OrderViewModel>>(orders);
         }
 
-        public OrderViewModel GetById(int idTmp) 
+        public OrderViewModel GetById(string idTmp) 
         {
             var order = _orderRepository.Get().SingleOrDefault(x => x.Equals(idTmp));
             return _mapper.Map<OrderViewModel>(order);

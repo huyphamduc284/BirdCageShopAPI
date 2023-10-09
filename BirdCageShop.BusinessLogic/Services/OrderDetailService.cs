@@ -1,4 +1,6 @@
 
+using AutoMapper;
+using BirdCageShop.DataAccess.Models;
 using BirdCageShop.DataAccess.Repositories;
 using Ecommerce.BusinessLogic.RequestModels.OrderDetail;
 using Ecommerce.BusinessLogic.ViewModels;
@@ -9,43 +11,65 @@ namespace BirdCageShop.BusinessLogic.Services
     public interface IOrderDetailService {
         public OrderDetailViewModel CreateOrderDetail(CreateOrderDetailRequestModel orderdetailCreate);
         public OrderDetailViewModel UpdateOrderDetail(UpdateOrderDetailRequestModel orderdetailUpdate);
-        public bool DeleteOrderDetail(int idTmp);
+        public bool DeleteOrderDetail(string idTmp);
         public List<OrderDetailViewModel> GetAll();
-        public OrderDetailViewModel GetById(int idTmp);
+        public OrderDetailViewModel GetById(string idTmp);
     }
 
     public class OrderDetailService : IOrderDetailService {
 
       private readonly IOrderDetailRepository _orderdetailRepository;
+        private readonly IMapper _mapper;
 
-        public OrderDetailService(IOrderDetailRepository orderdetailRepository)
+        public OrderDetailService(IOrderDetailRepository orderdetailRepository, IMapper mapper)
         {
             _orderdetailRepository = orderdetailRepository;
+            _mapper = mapper;
         }
 
         public OrderDetailViewModel CreateOrderDetail(CreateOrderDetailRequestModel orderdetailCreate)
         {
-            throw new NotImplementedException();
+            var orderDetail = _mapper.Map<OrderDetail>(orderdetailCreate);
+            orderDetail.OrderDetailId = Guid.NewGuid().ToString();
+
+            _orderdetailRepository.Create(orderDetail);
+            _orderdetailRepository.Save();
+
+            return _mapper.Map<OrderDetailViewModel>(orderDetail);
+
         }
 
         public OrderDetailViewModel UpdateOrderDetail(UpdateOrderDetailRequestModel orderdetailUpdate) 
         {
-            throw new NotImplementedException();
+            var orderDetail = _orderdetailRepository.Get().SingleOrDefault(x => x.OrderDetailId.Equals(orderdetailUpdate.OrderDetailId));
+            if (orderDetail == null) return null;
+            orderDetail.Quantity = orderdetailUpdate.Quantity;
+
+            _orderdetailRepository.Update(orderDetail);
+            _orderdetailRepository.Save();
+
+            return _mapper.Map<OrderDetailViewModel>(orderDetail);
         }
 
-        public bool DeleteOrderDetail(int idTmp)
+        public bool DeleteOrderDetail(String idTmp)
         {
-            throw new NotImplementedException();
+            var orderDetail = _orderdetailRepository.Get().SingleOrDefault(x => x.OrderDetailId.Equals(idTmp));
+            if(orderDetail == null) return false;
+            _orderdetailRepository.Delete(orderDetail);
+            _orderdetailRepository.Save();
+            return true;
         }
 
         public List<OrderDetailViewModel> GetAll() 
         {
-            throw new NotImplementedException();
+           var orderDetails = _orderdetailRepository.Get().ToList();
+            return _mapper.Map<List<OrderDetailViewModel>>(orderDetails);
         }
 
-        public OrderDetailViewModel GetById(int idTmp) 
+        public OrderDetailViewModel GetById(string idTmp) 
         {
-            throw new NotImplementedException();
+            var orderDetail = _orderdetailRepository.Get().SingleOrDefault(x => x.OrderDetailId.Equals(idTmp));
+            return _mapper.Map<OrderDetailViewModel>(orderDetail);
         }
 
     }

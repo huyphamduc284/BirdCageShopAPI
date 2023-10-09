@@ -49,7 +49,7 @@ namespace BirdCageShop.Presentation.Controllers
 
         [MapToApiVersion("1")]
         [HttpGet("idTmp")]
-        public ActionResult<PaymentViewModel> GetById(int idTmp)
+        public ActionResult<PaymentViewModel> GetById(string idTmp)
         {
             var paymentDetail = _paymentService.GetById(idTmp);
 
@@ -62,7 +62,7 @@ namespace BirdCageShop.Presentation.Controllers
 
         [MapToApiVersion("1")]
         [HttpDelete]
-        public ActionResult<bool> DeletePayment(int idTmp)
+        public ActionResult<bool> DeletePayment(string idTmp)
         {
             var check = _paymentService.DeletePayment(idTmp);
 

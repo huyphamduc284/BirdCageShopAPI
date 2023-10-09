@@ -1,6 +1,8 @@
 
 
 using AutoMapper;
+using BirdCageShop.BusinessLogic.Enums;
+using BirdCageShop.DataAccess.Models;
 using BirdCageShop.DataAccess.Repositories;
 using Ecommerce.BusinessLogic.RequestModels.Product;
 using Ecommerce.BusinessLogic.ViewModels;
@@ -11,9 +13,9 @@ namespace BirdCageShop.BusinessLogic.Services
     public interface IProductService {
         public ProductViewModel CreateProduct(CreateProductRequestModel productCreate);
         public ProductViewModel UpdateProduct(UpdateProductRequestModel productUpdate);
-        public bool DeleteProduct(int idTmp);
+        public bool DeleteProduct(string idTmp);
         public List<ProductViewModel> GetAll();
-        public ProductViewModel GetById(int idTmp);
+        public ProductViewModel GetById(string idTmp);
     }
 
     public class ProductService : IProductService {
@@ -29,28 +31,63 @@ namespace BirdCageShop.BusinessLogic.Services
 
         public ProductViewModel CreateProduct(CreateProductRequestModel productCreate)
         {
-            throw new NotImplementedException();
+            var product = _mapper.Map<Product>(productCreate);
+            product.ProductId = Guid.NewGuid().ToString();
+            product.Status = (int?)ProductStatusEnum.availible;
+
+            _productRepository.Create(product);
+            _productRepository.Save();
+
+            return _mapper.Map<ProductViewModel>(product);
+
 
         }
 
         public ProductViewModel UpdateProduct(UpdateProductRequestModel productUpdate) 
         {
-            throw new NotImplementedException();
+            var product = _productRepository.Get().SingleOrDefault(x => x.ProductId.Equals(productUpdate.ProductId));
+            if (product == null) return null;
+            product.ProductName = productUpdate.ProductName;
+            product.BirdType = productUpdate.BirdType;
+            product.Model = productUpdate.Model;
+            product.Price = productUpdate.Price;
+            product.Description = productUpdate.Description;
+            product.Status = productUpdate.Status;
+            product.Size = productUpdate.Size;
+            product.ProductMaterial = productUpdate.ProductMaterial;
+            product.BirdCageType = productUpdate.BirdCageType;
+
+            _productRepository.Update(product);
+            _productRepository.Save();
+
+            return _mapper.Map<ProductViewModel>(product);
+
         }
 
-        public bool DeleteProduct(int idTmp)
+        public bool DeleteProduct(string idTmp)
         {
-            throw new NotImplementedException();
+            var product = _productRepository.Get().SingleOrDefault(x => x.ProductId.Equals(idTmp));
+            if (product == null) return false;
+            product.Status = (int?)ProductStatusEnum.unavailible;
+
+            _productRepository.Update(product);
+            _productRepository.Save();
+
+            return true;
         }
 
         public List<ProductViewModel> GetAll() 
         {
-            throw new NotImplementedException();
+            var products = _productRepository.Get().ToList();
+            return _mapper.Map<List<ProductViewModel>>(products);
         }
 
-        public ProductViewModel GetById(int idTmp) 
+        public ProductViewModel GetById(string idTmp) 
         {
-            throw new NotImplementedException();
+            var product = _productRepository.Get().SingleOrDefault(x => x.ProductId.Equals(idTmp));
+            if (product == null) return null;
+
+            return _mapper.Map<ProductViewModel>(product);
         }
 
     }

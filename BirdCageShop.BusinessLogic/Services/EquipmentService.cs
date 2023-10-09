@@ -3,6 +3,7 @@
 
 
 using AutoMapper;
+using BirdCageShop.BusinessLogic.Enums;
 using BirdCageShop.DataAccess.Models;
 using BirdCageShop.DataAccess.Repositories;
 using Ecommerce.BusinessLogic.RequestModels.Equipment;
@@ -15,7 +16,7 @@ namespace BirdCageShop.BusinessLogic.Services
     public interface IEquipmentService {
         public EquipmentViewModel CreateEquipment(CreateEquipmentRequestModel equipmentCreate);
         public EquipmentViewModel UpdateEquipment(UpdateEquipmentRequestModel equipmentUpdate);
-        public bool DeleteEquipment(int idTmp);
+        public bool DeleteEquipment(string idTmp);
         public List<EquipmentViewModel> GetAll();
         public EquipmentViewModel GetById(string idTmp);
     }
@@ -35,8 +36,10 @@ namespace BirdCageShop.BusinessLogic.Services
         {
             var equipment = _mapper.Map<Equipment>(equipmentCreate);
             equipment.EquipmentId = Guid.NewGuid().ToString();
+
             _equipmentRepository.Create(equipment);
             _equipmentRepository.Save();
+
             return _mapper.Map<EquipmentViewModel>(equipment);
         }
 
@@ -46,20 +49,29 @@ namespace BirdCageShop.BusinessLogic.Services
             if (equipment == null) return null;
             equipment.Name = equipmentUpdate.Name;
             equipment.Type = equipmentUpdate.Type;
+
             _equipmentRepository.Update(equipment);
             _equipmentRepository.Save();
+
             return _mapper.Map<EquipmentViewModel>(equipment);
         }
 
-        public bool DeleteEquipment(int idTmp)
+        public bool DeleteEquipment(string idTmp)
         {
-            throw new NotImplementedException();
+            var equipment = _equipmentRepository.Get().SingleOrDefault(x => x.EquipmentId.Equals(idTmp));
+            if (equipment == null) return false;
+            equipment.Status = (int?)EquipmentStatusEnum.unavailible;
+
+            _equipmentRepository.Update(equipment);
+            _equipmentRepository.Save();
+
+            return true;
         }
 
         public List<EquipmentViewModel> GetAll() 
         {
-            var equipment = _equipmentRepository.Get().ToList();
-            return _mapper.Map<List<EquipmentViewModel>>(equipment);
+            var equipments = _equipmentRepository.Get().ToList();
+            return _mapper.Map<List<EquipmentViewModel>>(equipments);
         }
 
         public EquipmentViewModel GetById(string idTmp)

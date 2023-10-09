@@ -11,9 +11,9 @@ namespace BirdCageShop.BusinessLogic.Services
     public interface IPaymentService {
         public PaymentViewModel CreatePayment(CreatePaymentRequestModel paymentCreate);
         public PaymentViewModel UpdatePayment(UpdatePaymentRequestModel paymentUpdate);
-        public bool DeletePayment(int idTmp);
+        public bool DeletePayment(string idTmp);
         public List<PaymentViewModel> GetAll();
-        public PaymentViewModel GetById(int idTmp);
+        public PaymentViewModel GetById(string idTmp);
     }
 
     public class PaymentService : IPaymentService {
@@ -45,22 +45,40 @@ namespace BirdCageShop.BusinessLogic.Services
 
         public PaymentViewModel UpdatePayment(UpdatePaymentRequestModel paymentUpdate) 
         {
-            throw new NotImplementedException();
+            var payment = _paymentRepository.Get().SingleOrDefault(x => x.PaymentId.Equals(paymentUpdate.PaymentId));
+            if (payment == null) return null;
+            payment.PaymentMethod = paymentUpdate.PaymentMethod;
+            payment.CardNumber = paymentUpdate.CardNumber;
+            payment.ExpirationDate = paymentUpdate.ExpirationDate;
+            payment.Cvv = paymentUpdate.Cvv;
+
+            _paymentRepository.Update(payment);
+            _paymentRepository.Save();
+
+            return _mapper.Map<PaymentViewModel>(payment);
         }
 
-        public bool DeletePayment(int idTmp)
+        public bool DeletePayment(string idTmp)
         {
-            throw new NotImplementedException();
+            var payment = _paymentRepository.Get().SingleOrDefault(x => x.PaymentId.Equals(idTmp));
+            if (payment == null) return false;
+            _paymentRepository.Delete(payment);
+            _paymentRepository.Save();
+            return true;
         }
 
         public List<PaymentViewModel> GetAll() 
         {
-            throw new NotImplementedException();
+            var payments = _paymentRepository.Get().ToList();
+            if (payments == null) return null;
+            return _mapper.Map<List<PaymentViewModel>>(payments);
         }
 
-        public PaymentViewModel GetById(int idTmp) 
+        public PaymentViewModel GetById(string idTmp) 
         {
-            throw new NotImplementedException();
+            var payment = _paymentRepository.Get().SingleOrDefault(x => x.PaymentId.Equals(idTmp));
+            if (payment == null) return null;
+            return _mapper.Map<PaymentViewModel>(payment);
         }
 
     }
