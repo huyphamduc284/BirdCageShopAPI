@@ -53,7 +53,7 @@ namespace BirdCageShop.Presentation.Controllers
 
         [MapToApiVersion("1")]
         [HttpGet("idTmp")]
-        public ActionResult<EquipmentViewModel> GetById(int idTmp)
+        public ActionResult<EquipmentViewModel> GetById(string idTmp)
         {
             var equipmentDetail = _equipmentService.GetById(idTmp);
 

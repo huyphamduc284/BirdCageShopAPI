@@ -1,5 +1,6 @@
 
 
+using AutoMapper;
 using BirdCageShop.DataAccess.Repositories;
 using Ecommerce.BusinessLogic.RequestModels.Product;
 using Ecommerce.BusinessLogic.ViewModels;
@@ -18,15 +19,18 @@ namespace BirdCageShop.BusinessLogic.Services
     public class ProductService : IProductService {
 
       private readonly IProductRepository _productRepository;
-
-        public ProductService(IProductRepository productRepository)
+        private readonly IMapper _mapper;
+        public ProductService(IProductRepository productRepository, IMapper mapper )
         {
             _productRepository = productRepository;
+            _mapper = mapper;
+
         }
 
         public ProductViewModel CreateProduct(CreateProductRequestModel productCreate)
         {
             throw new NotImplementedException();
+
         }
 
         public ProductViewModel UpdateProduct(UpdateProductRequestModel productUpdate) 

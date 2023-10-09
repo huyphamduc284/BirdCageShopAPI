@@ -70,8 +70,6 @@ namespace BirdCageShop.DataAccess.Models
 
                 entity.Property(e => e.OrderDate).HasColumnType("date");
 
-                entity.Property(e => e.OrderStatus).HasMaxLength(50);
-
                 entity.Property(e => e.State).HasMaxLength(200);
 
                 entity.Property(e => e.UserId)

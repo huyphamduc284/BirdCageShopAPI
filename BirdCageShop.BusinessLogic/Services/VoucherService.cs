@@ -1,5 +1,6 @@
 
 
+using AutoMapper;
 using BirdCageShop.DataAccess.Repositories;
 using Ecommerce.BusinessLogic.RequestModels.Voucher;
 using Ecommerce.BusinessLogic.ViewModels;
@@ -18,10 +19,11 @@ namespace BirdCageShop.BusinessLogic.Services
     public class VoucherService : IVoucherService {
 
       private readonly IVoucherRepository _voucherRepository;
-
-        public VoucherService(IVoucherRepository voucherRepository)
+        private readonly IMapper _mapper;
+        public VoucherService(IVoucherRepository voucherRepository, IMapper mapper)
         {
             _voucherRepository = voucherRepository;
+            _mapper = mapper;   
         }
 
         public VoucherViewModel CreateVoucher(CreateVoucherRequestModel voucherCreate)
