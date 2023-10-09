@@ -66,7 +66,7 @@ namespace BirdCageShop.Presentation.Controllers
 
         [MapToApiVersion("1")]
         [HttpDelete]
-        public ActionResult<bool> DeleteEquipment(int idTmp)
+        public ActionResult<bool> DeleteEquipment(string idTmp)
         {
             var check = _equipmentService.DeleteEquipment(idTmp);
 

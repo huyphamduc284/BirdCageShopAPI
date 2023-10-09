@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BirdCageShop.DataAccess.Models;
 using BirdCageShop.DataAccess.Repositories;
 using Ecommerce.BusinessLogic.RequestModels.User;
 using Ecommerce.BusinessLogic.ViewModels;
@@ -12,7 +13,7 @@ namespace BirdCageShop.BusinessLogic.Services
 {
     public interface ILoginService
     {
-        public LoginViewModel Login(LoginRequestModel login);
+        public LoginViewModel Authenticate(LoginRequestModel loginRequest);
     }
     public class LoginService : ILoginService{
 
@@ -25,9 +26,17 @@ namespace BirdCageShop.BusinessLogic.Services
             _mapper = mapper;
         }
 
-        public LoginViewModel Login(LoginRequestModel login)
+        public LoginViewModel Authenticate(LoginRequestModel loginRequest)
         {
-            throw new NotImplementedException();
+          
+            var user =  _userRepository.Get().SingleOrDefault(x => x.Equals(loginRequest.Username));
+
+            if (user == null && user?.Password != loginRequest.Password) return null;
+            
+           
+            return _mapper.Map<LoginViewModel>(user);
         }
+
+       
     }
 }

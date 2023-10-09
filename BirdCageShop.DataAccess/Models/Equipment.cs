@@ -13,6 +13,7 @@ namespace BirdCageShop.DataAccess.Models
         public string EquipmentId { get; set; } = null!;
         public string? Name { get; set; }
         public string? Type { get; set; }
+        public int? Status { get; set; }
 
         public virtual ICollection<ProductEquipment> ProductEquipments { get; set; }
     }

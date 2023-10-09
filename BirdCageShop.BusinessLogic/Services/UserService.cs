@@ -72,6 +72,7 @@ namespace BirdCageShop.BusinessLogic.Services
         public List<UserViewModel> GetAll() 
         {
           var users = _userRepository.Get().ToList();
+            if (users == null) return null;
             return _mapper.Map<List<UserViewModel>>(users);
         }
 

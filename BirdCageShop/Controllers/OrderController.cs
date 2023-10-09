@@ -49,7 +49,7 @@ namespace BirdCageShop.Presentation.Controllers
 
         [MapToApiVersion("1")]
         [HttpGet("idTmp")]
-        public ActionResult<OrderViewModel> GetById(int idTmp)
+        public ActionResult<OrderViewModel> GetById(string idTmp)
         {
             var orderDetail = _orderService.GetById(idTmp);
 
@@ -62,7 +62,7 @@ namespace BirdCageShop.Presentation.Controllers
 
         [MapToApiVersion("1")]
         [HttpDelete]
-        public ActionResult<bool> DeleteOrder(int idTmp)
+        public ActionResult<bool> DeleteOrder(string idTmp)
         {
             var check = _orderService.DeleteOrder(idTmp);
 

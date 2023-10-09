@@ -18,9 +18,17 @@ namespace BirdCageShop.Presentation.Controllers
 
         [MapToApiVersion("1")]
         [HttpPost]
-        public ActionResult<LoginViewModel> CreateUser(LoginRequestModel userCreate)
+        public ActionResult<LoginViewModel> CreateUser(LoginRequestModel loginRequest)
         {
-            return null;
+            var user = _loginService.Authenticate(loginRequest);
+
+            if (user == null)
+            {
+                return NotFound("");
+            }
+
+            return user;
+               
         }
     }
 }
