@@ -1,4 +1,6 @@
 
+using AutoMapper;
+using BirdCageShop.DataAccess.Models;
 using BirdCageShop.DataAccess.Repositories;
 using Ecommerce.BusinessLogic.RequestModels.Payment;
 using Ecommerce.BusinessLogic.ViewModels;
@@ -16,16 +18,29 @@ namespace BirdCageShop.BusinessLogic.Services
 
     public class PaymentService : IPaymentService {
 
-      private readonly IPaymentRepository _paymentRepository;
+        private readonly IPaymentRepository _paymentRepository;
+        private readonly IMapper _mapper;
 
-        public PaymentService(IPaymentRepository paymentRepository)
+        public PaymentService(IPaymentRepository paymentRepository, IMapper mapper)
         {
             _paymentRepository = paymentRepository;
+            _mapper = mapper;
         }
 
         public PaymentViewModel CreatePayment(CreatePaymentRequestModel paymentCreate)
         {
-            throw new NotImplementedException();
+            var payment = _mapper.Map<Payment>(paymentCreate);
+            payment.PaymentId = Guid.NewGuid().ToString();
+            payment.PaymentMethod = paymentCreate.PaymentMethod;
+            payment.CardNumber = paymentCreate.CardNumber;  
+            payment.Cvv = paymentCreate.Cvv;
+            payment.ExpirationDate = paymentCreate.ExpirationDate;
+
+            _paymentRepository.Create(payment);
+            _paymentRepository.Save();
+
+            return _mapper.Map<PaymentViewModel>(payment);  
+            
         }
 
         public PaymentViewModel UpdatePayment(UpdatePaymentRequestModel paymentUpdate) 

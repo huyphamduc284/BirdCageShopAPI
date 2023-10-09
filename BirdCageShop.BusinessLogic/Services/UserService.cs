@@ -1,5 +1,4 @@
 
-
 using AutoMapper;
 using BirdCageShop.BusinessLogic.Enums;
 using BirdCageShop.DataAccess.Models;
@@ -21,7 +20,7 @@ namespace BirdCageShop.BusinessLogic.Services
     public class UserService : IUserService {
 
       private readonly IUserRepository _userRepository;
-        private readonly IMapper _mapper;
+      private readonly IMapper _mapper;
 
         public UserService(IUserRepository userRepository, IMapper mapper)
         {
@@ -32,7 +31,7 @@ namespace BirdCageShop.BusinessLogic.Services
         public UserViewModel CreateUser(CreateUserRequestModel userCreate)
         {
             var user = _mapper.Map<User>(userCreate);
-            user.UserId =Guid.NewGuid().ToString();
+            user.UserId = Guid.NewGuid().ToString();
             user.Status = (int?)UserStatusEnum.Active;
             user.RoleId = (int?)UserRoleEnum.Customer;
 
@@ -44,10 +43,8 @@ namespace BirdCageShop.BusinessLogic.Services
         public UserViewModel UpdateUser(UpdateUserRequestModel userUpdate) 
         {
             var user = _userRepository.Get().SingleOrDefault(x => x.UserId.Equals(userUpdate.UserId));
-            if(user == null)
-            {
-                return null;
-            }
+            if(user == null) return null;
+            
             user.Username = userUpdate.Username;
             user.Password = userUpdate.Password;
             user.FirstName = userUpdate.FirstName;
@@ -62,7 +59,14 @@ namespace BirdCageShop.BusinessLogic.Services
 
         public bool DeleteUser(string idTmp)
         {
-            throw new NotImplementedException();
+            var user = _userRepository.Get().SingleOrDefault(x => x.UserId.Equals(idTmp));
+            
+            if(user == null) return false;
+            user.Status = (int?)UserStatusEnum.InActive;
+
+            _userRepository.Update(user);
+            _userRepository.Save();
+            return true;
         }
 
         public List<UserViewModel> GetAll() 

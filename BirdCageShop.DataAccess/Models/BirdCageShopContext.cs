@@ -45,7 +45,7 @@ namespace BirdCageShop.DataAccess.Models
 
                 entity.Property(e => e.Name).HasMaxLength(255);
 
-                entity.Property(e => e.Tyoe).HasMaxLength(200);
+                entity.Property(e => e.Type).HasMaxLength(200);
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -69,8 +69,6 @@ namespace BirdCageShop.DataAccess.Models
                     .HasColumnName("method");
 
                 entity.Property(e => e.OrderDate).HasColumnType("date");
-
-                entity.Property(e => e.OrderStatus).HasMaxLength(50);
 
                 entity.Property(e => e.State).HasMaxLength(200);
 
@@ -160,10 +158,6 @@ namespace BirdCageShop.DataAccess.Models
                     .IsFixedLength();
 
                 entity.Property(e => e.BirdType).HasMaxLength(255);
-
-                entity.Property(e => e.CategoryId)
-                    .HasMaxLength(200)
-                    .HasColumnName("CategoryID");
 
                 entity.Property(e => e.Description).HasColumnType("text");
 

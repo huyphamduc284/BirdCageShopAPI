@@ -7,8 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repositories\LoginRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>
