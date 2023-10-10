@@ -14,7 +14,7 @@ namespace BirdCageShop.BusinessLogic.AutoMapperModule
             mc.CreateMap<User, UserViewModel>().ReverseMap();
             mc.CreateMap<User, CreateUserRequestModel>().ReverseMap();
             mc.CreateMap<User, UpdateUserRequestModel>().ReverseMap();
-            mc.CreateMap<User, LoginRequestModel>().ReverseMap();
+            mc.CreateMap<User, LoginViewModel>().ReverseMap();
         }
     }
 
