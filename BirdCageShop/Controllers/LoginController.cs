@@ -20,14 +20,22 @@ namespace BirdCageShop.Presentation.Controllers
         [HttpPost]
         public ActionResult<LoginViewModel> CreateUser(LoginRequestModel loginRequest)
         {
-            var user = _loginService.Authenticate(loginRequest);
-
-            if (user == null)
+            try
             {
-                return NotFound("");
-            }
+                var user = _loginService.Authenticate(loginRequest);
 
-            return user;
+                if (user == null)
+                {
+                    return NotFound("");
+                }
+
+                return user;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+           
                
         }
     }

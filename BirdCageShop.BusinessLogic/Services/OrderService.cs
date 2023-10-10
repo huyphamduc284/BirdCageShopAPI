@@ -42,7 +42,6 @@ namespace BirdCageShop.BusinessLogic.Services
             order.Method = orderCreate.Method;
             order.Rating = orderCreate.Rating;
             order.Comment = orderCreate.Comment;
-            
 
             _orderRepository.Create(order);
             _orderRepository.Save();
