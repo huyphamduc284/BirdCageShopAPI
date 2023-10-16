@@ -57,7 +57,6 @@ namespace BirdCageShop.BusinessLogic.Services
             order.ZipCode = orderUpdate.ZipCode;
             order.Country = orderUpdate.Country;
             order.Method = orderUpdate.Method;
-            order.Rating = orderUpdate.Rating;
             order.Comment = orderUpdate.Comment;
 
             _orderRepository.Update(order);

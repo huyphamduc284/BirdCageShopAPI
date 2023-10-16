@@ -44,7 +44,11 @@ namespace BirdCageShop.DataAccess.Models
                     .HasMaxLength(200)
                     .HasColumnName("EquipmentID");
 
+                entity.Property(e => e.Charge).HasColumnType("decimal(10, 2)");
+
                 entity.Property(e => e.Name).HasMaxLength(255);
+
+                entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
 
                 entity.Property(e => e.Type).HasMaxLength(200);
             });

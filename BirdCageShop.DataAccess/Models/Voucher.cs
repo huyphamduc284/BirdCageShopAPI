@@ -16,6 +16,7 @@ namespace BirdCageShop.DataAccess.Models
         public string? Discount { get; set; }
         public string? CouponCode { get; set; }
         public DateTime? ExpirationDate { get; set; }
+        public int? Status { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<User> Users { get; set; }
