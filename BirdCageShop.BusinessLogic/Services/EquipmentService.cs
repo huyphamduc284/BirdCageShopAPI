@@ -1,7 +1,4 @@
 
-
-
-
 using AutoMapper;
 using BirdCageShop.BusinessLogic.Enums;
 using BirdCageShop.DataAccess.Models;
