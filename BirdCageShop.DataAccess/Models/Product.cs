@@ -22,6 +22,7 @@ namespace BirdCageShop.DataAccess.Models
         public int? Size { get; set; }
         public string? ProductMaterial { get; set; }
         public string? BirdCageType { get; set; }
+        public string? Image { get; set; }
 
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual ICollection<ProductEquipment> ProductEquipments { get; set; }

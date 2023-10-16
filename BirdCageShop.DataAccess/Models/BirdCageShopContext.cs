@@ -17,6 +17,7 @@ namespace BirdCageShop.DataAccess.Models
         }
 
         public virtual DbSet<Equipment> Equipment { get; set; } = null!;
+        public virtual DbSet<Notification> Notifications { get; set; } = null!;
         public virtual DbSet<Order> Orders { get; set; } = null!;
         public virtual DbSet<OrderDetail> OrderDetails { get; set; } = null!;
         public virtual DbSet<Payment> Payments { get; set; } = null!;
@@ -48,6 +49,30 @@ namespace BirdCageShop.DataAccess.Models
                 entity.Property(e => e.Type).HasMaxLength(200);
             });
 
+            modelBuilder.Entity<Notification>(entity =>
+            {
+                entity.ToTable("Notification");
+
+                entity.Property(e => e.NotificationId)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("NotificationID");
+
+                entity.Property(e => e.Body).HasColumnType("ntext");
+
+                entity.Property(e => e.SentTime).HasColumnType("datetime");
+
+                entity.Property(e => e.UserId)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("UserID");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Notifications)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK_Notification_User");
+            });
+
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.ToTable("Order");
@@ -73,7 +98,8 @@ namespace BirdCageShop.DataAccess.Models
                 entity.Property(e => e.State).HasMaxLength(200);
 
                 entity.Property(e => e.UserId)
-                    .HasMaxLength(200)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
                     .HasColumnName("UserID");
 
                 entity.Property(e => e.ZipCode)
@@ -214,12 +240,21 @@ namespace BirdCageShop.DataAccess.Models
                     .IsUnique();
 
                 entity.Property(e => e.UserId)
-                    .HasMaxLength(200)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
                     .HasColumnName("UserID");
+
+                entity.Property(e => e.BannedTime).HasColumnType("datetime");
+
+                entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
                 entity.Property(e => e.Email).HasMaxLength(255);
 
                 entity.Property(e => e.FirstName).HasMaxLength(50);
+
+                entity.Property(e => e.Image)
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.LastName).HasMaxLength(50);
 
@@ -284,7 +319,7 @@ namespace BirdCageShop.DataAccess.Models
 
                             j.IndexerProperty<string>("VoucherId").HasMaxLength(200).HasColumnName("VoucherID");
 
-                            j.IndexerProperty<string>("UserId").HasMaxLength(200).HasColumnName("UserID");
+                            j.IndexerProperty<string>("UserId").HasMaxLength(100).IsUnicode(false).HasColumnName("UserID");
                         });
             });
 

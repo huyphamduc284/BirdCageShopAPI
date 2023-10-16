@@ -34,6 +34,7 @@ namespace BirdCageShop.BusinessLogic.Services
             user.UserId = Guid.NewGuid().ToString();
             user.Status = (int?)UserStatusEnum.Active;
             user.RoleId = (int?)UserRoleEnum.Customer;
+            user.CreateTime = DateTime.Now;
 
             _userRepository.Create(user);
             _userRepository.Save();
@@ -51,7 +52,7 @@ namespace BirdCageShop.BusinessLogic.Services
             user.LastName = userUpdate.LastName;    
             user.PhoneNumber= userUpdate.PhoneNumber;
             user.Email = userUpdate.Email;
-
+            user.Image = userUpdate.Image;
             _userRepository.Update(user);
             _userRepository.Save();
             return _mapper.Map<UserViewModel>(user);
