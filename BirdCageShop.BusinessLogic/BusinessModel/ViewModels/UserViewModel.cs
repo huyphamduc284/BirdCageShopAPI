@@ -13,6 +13,10 @@ namespace Ecommerce.BusinessLogic.ViewModels
         public string? Email { get; set; }
         public int? RoleId { get; set; }
         public int? Status { get; set; }
+        public DateTime? CreateTime { get; set; }
+        public DateTime? BannedTime { get; set; }
+        public string? Image { get; set; }
+
 
     }
 

@@ -7,6 +7,7 @@ namespace BirdCageShop.DataAccess.Models
     {
         public User()
         {
+            Notifications = new HashSet<Notification>();
             Orders = new HashSet<Order>();
             Vouchers = new HashSet<Voucher>();
         }
@@ -20,8 +21,12 @@ namespace BirdCageShop.DataAccess.Models
         public string? Email { get; set; }
         public int? RoleId { get; set; }
         public int? Status { get; set; }
+        public DateTime? CreateTime { get; set; }
+        public DateTime? BannedTime { get; set; }
+        public string? Image { get; set; }
 
         public virtual Role? Role { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
 
         public virtual ICollection<Voucher> Vouchers { get; set; }

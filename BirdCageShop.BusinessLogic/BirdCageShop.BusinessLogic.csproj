@@ -8,14 +8,18 @@
 
   <ItemGroup>
     <Compile Remove="BusinessModel\RequestModels\NewFolder1\**" />
+    <Compile Remove="BusinessModel\RequestModels\NewFolder2\**" />
     <Compile Remove="BusinessModel\RequestModels\NewFolder\**" />
     <EmbeddedResource Remove="BusinessModel\RequestModels\NewFolder1\**" />
+    <EmbeddedResource Remove="BusinessModel\RequestModels\NewFolder2\**" />
     <EmbeddedResource Remove="BusinessModel\RequestModels\NewFolder\**" />
     <None Remove="BusinessModel\RequestModels\NewFolder1\**" />
+    <None Remove="BusinessModel\RequestModels\NewFolder2\**" />
     <None Remove="BusinessModel\RequestModels\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="BusinessModel\RequestModels\Notification.cs" />
     <Compile Remove="Services\LoginSercice.cs" />
   </ItemGroup>
 

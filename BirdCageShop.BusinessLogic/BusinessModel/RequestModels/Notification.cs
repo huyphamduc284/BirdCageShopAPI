@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BirdCageShop.BusinessLogic.BusinessModel.RequestModels.NewFolder1
+namespace BirdCageShop.BusinessLogic.BusinessModel.RequestModels
 {
-    internal class LoginRequestModel
+    internal class Notification
     {
     }
 }
