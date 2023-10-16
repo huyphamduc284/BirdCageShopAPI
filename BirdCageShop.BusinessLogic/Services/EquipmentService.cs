@@ -47,6 +47,7 @@ namespace BirdCageShop.BusinessLogic.Services
             equipment.Name = equipmentUpdate.Name;
             equipment.Type = equipmentUpdate.Type;
             equipment.Image = equipmentUpdate.Image;
+
             _equipmentRepository.Update(equipment);
             _equipmentRepository.Save();
 

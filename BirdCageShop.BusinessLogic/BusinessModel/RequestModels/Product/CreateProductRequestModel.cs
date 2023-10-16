@@ -11,7 +11,8 @@ namespace Ecommerce.BusinessLogic.RequestModels.Product
         public string? Description { get; set; }
         public int? Size { get; set; }
         public string? ProductMaterial { get; set; }
-      
+        public string? Image { get; set; }
+
     }
 
 }

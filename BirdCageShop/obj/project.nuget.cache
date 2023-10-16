@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6+3w/FqA/dzffoywXA10AerhgIi6Cf9KiYIWwG6Q1wWYu6NDV50jV7zeHaq5FdjfCRzKjYc+RxGrQxuZhAtwtA==",
+  "dgSpecHash": "jR0MF7jWnIHv4nhBv+in9sKZuUFTFLCFNPdFLZojpXy+iBoTeasmazS2V83mOUiu1DKN57SwoRT7k7zDrrdRvA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShop\\BirdCageShop\\BirdCageShop.Presentation.csproj",
+  "projectFilePath": "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShopAPI\\BirdCageShop\\BirdCageShop.Presentation.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yoga\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\yoga\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\5.0.0\\microsoft.aspnetcore.mvc.versioning.5.0.0.nupkg.sha512",
