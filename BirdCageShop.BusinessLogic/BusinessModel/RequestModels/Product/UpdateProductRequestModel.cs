@@ -15,6 +15,7 @@ namespace Ecommerce.BusinessLogic.RequestModels.Product
         public string? ProductMaterial { get; set; }
         public string? BirdCageType { get; set; }
         public string? Image { get; set; }
+        public int? Rating { get; set; }
     }
 
 }

@@ -11,7 +11,6 @@ namespace Ecommerce.BusinessLogic.RequestModels.Order
         public string? ZipCode { get; set; }
         public string? Country { get; set; }
         public string? Method { get; set; }
-        public int? Rating { get; set; }
         public string? Comment { get; set; }
     }
 

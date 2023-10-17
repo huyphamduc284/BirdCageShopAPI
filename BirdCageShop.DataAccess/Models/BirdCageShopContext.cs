@@ -46,6 +46,8 @@ namespace BirdCageShop.DataAccess.Models
 
                 entity.Property(e => e.Charge).HasColumnType("decimal(10, 2)");
 
+                entity.Property(e => e.Image).HasColumnType("ntext");
+
                 entity.Property(e => e.Name).HasMaxLength(255);
 
                 entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
@@ -191,6 +193,8 @@ namespace BirdCageShop.DataAccess.Models
 
                 entity.Property(e => e.Description).HasColumnType("text");
 
+                entity.Property(e => e.Image).HasColumnType("ntext");
+
                 entity.Property(e => e.Model).HasMaxLength(255);
 
                 entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
@@ -256,9 +260,7 @@ namespace BirdCageShop.DataAccess.Models
 
                 entity.Property(e => e.FirstName).HasMaxLength(50);
 
-                entity.Property(e => e.Image)
-                    .HasMaxLength(500)
-                    .IsUnicode(false);
+                entity.Property(e => e.Image).HasColumnType("ntext");
 
                 entity.Property(e => e.LastName).HasMaxLength(50);
 
