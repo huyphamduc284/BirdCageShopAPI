@@ -1,6 +1,8 @@
 
 
 using AutoMapper;
+using BirdCageShop.BusinessLogic.Enums;
+using BirdCageShop.DataAccess.Models;
 using BirdCageShop.DataAccess.Repositories;
 using Ecommerce.BusinessLogic.RequestModels.Voucher;
 using Ecommerce.BusinessLogic.ViewModels;
@@ -14,6 +16,8 @@ namespace BirdCageShop.BusinessLogic.Services
         public bool DeleteVoucher(int idTmp);
         public List<VoucherViewModel> GetAll();
         public VoucherViewModel GetById(int idTmp);
+        public List<VoucherViewModel> GetByUserId(string userId);
+        public List<VoucherViewModel> GetByProductId(string productId);
     }
 
     public class VoucherService : IVoucherService {
@@ -28,29 +32,72 @@ namespace BirdCageShop.BusinessLogic.Services
 
         public VoucherViewModel CreateVoucher(CreateVoucherRequestModel voucherCreate)
         {
-            throw new NotImplementedException();
+            var voucher = _mapper.Map<Voucher>(voucherCreate);
+            voucher.VoucherId = Guid.NewGuid().ToString();
+            voucher.Status = (int?)VoucherStatusEnum.Active;
+
+            return _mapper.Map<VoucherViewModel>(voucher);
         }
 
         public VoucherViewModel UpdateVoucher(UpdateVoucherRequestModel voucherUpdate) 
         {
-            throw new NotImplementedException();
+            var voucher = _voucherRepository.Get().SingleOrDefault(x => x.VoucherId.Equals(voucherUpdate.VoucherId));
+            if (voucher == null) return null;
+
+            voucher.Point = voucherUpdate.Point;
+            voucher.Discount = voucherUpdate.Discount;
+            voucher.CouponCode = voucherUpdate.CouponCode;
+            voucher.ExpirationDate = voucherUpdate.ExpirationDate;
+            voucher.Status = voucherUpdate.Status;
+
+            _voucherRepository.Update(voucher);
+            _voucherRepository.Save();
+
+            return _mapper.Map<VoucherViewModel>(voucher);
         }
 
         public bool DeleteVoucher(int idTmp)
         {
-            throw new NotImplementedException();
+            var voucher = _voucherRepository.Get().SingleOrDefault(x => x.VoucherId.Equals(idTmp));
+            if (voucher == null) return false;
+
+            voucher.Status = (int?)VoucherStatusEnum.Expried;
+
+            return true;
         }
 
         public List<VoucherViewModel> GetAll() 
         {
-            throw new NotImplementedException();
+            var voucher = _voucherRepository.Get().ToList();
+            if (voucher == null) return null;
+
+            return _mapper.Map<List<VoucherViewModel>>(voucher);
         }
 
         public VoucherViewModel GetById(int idTmp) 
         {
-            throw new NotImplementedException();
+            var voucher = _voucherRepository.Get().SingleOrDefault(x => x.VoucherId.Equals(idTmp));
+
+            return _mapper.Map<VoucherViewModel>(voucher);
         }
 
+        public List<VoucherViewModel> GetByUserId(string userId)
+        {
+            var voucher = _voucherRepository.Get().ToList().Where(x => x.VoucherId.Equals(userId));
+            if (voucher == null) return null;
+
+            return _mapper.Map<List<VoucherViewModel>>(voucher);
+        }
+
+       
+
+        public List<VoucherViewModel> GetByProductId(string productId)
+        {
+            var voucher = _voucherRepository.Get().ToList().Where(x => x.VoucherId.Equals(productId));
+            if (voucher == null) return null;
+
+            return _mapper.Map<List<VoucherViewModel>>(voucher);
+        }
     }
 
 }
