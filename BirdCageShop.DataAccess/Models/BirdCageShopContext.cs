@@ -284,6 +284,7 @@ namespace BirdCageShop.DataAccess.Models
 
                 entity.Property(e => e.VoucherId)
                     .HasMaxLength(200)
+                    .IsUnicode(false)
                     .HasColumnName("VoucherID");
 
                 entity.Property(e => e.CouponCode).HasMaxLength(50);
@@ -306,7 +307,7 @@ namespace BirdCageShop.DataAccess.Models
 
                             j.ToTable("ProductVoucher");
 
-                            j.IndexerProperty<string>("VoucherId").HasMaxLength(200).HasColumnName("VoucherID");
+                            j.IndexerProperty<string>("VoucherId").HasMaxLength(200).IsUnicode(false).HasColumnName("VoucherID");
 
                             j.IndexerProperty<string>("ProductId").HasMaxLength(200).HasColumnName("ProductID");
                         });
@@ -323,7 +324,7 @@ namespace BirdCageShop.DataAccess.Models
 
                             j.ToTable("UserVoucher");
 
-                            j.IndexerProperty<string>("VoucherId").HasMaxLength(200).HasColumnName("VoucherID");
+                            j.IndexerProperty<string>("VoucherId").HasMaxLength(200).IsUnicode(false).HasColumnName("VoucherID");
 
                             j.IndexerProperty<string>("UserId").HasMaxLength(100).IsUnicode(false).HasColumnName("UserID");
                         });

@@ -49,7 +49,7 @@ namespace BirdCageShop.Presentation.Controllers
 
         [MapToApiVersion("1")]
         [HttpGet("idTmp")]
-        public ActionResult<VoucherViewModel> GetById(int idTmp)
+        public ActionResult<VoucherViewModel> GetById(string idTmp)
         {
             var voucherDetail = _voucherService.GetById(idTmp);
 
@@ -61,8 +61,34 @@ namespace BirdCageShop.Presentation.Controllers
         }
 
         [MapToApiVersion("1")]
+        [HttpGet("userId")]
+        public ActionResult<List<VoucherViewModel>> GetByUserId(string userId)
+        {
+            var voucherDetail = _voucherService.GetByUserId(userId);
+
+            if (voucherDetail == null)
+            {
+                return NotFound("");
+            }
+            return voucherDetail;
+        }
+
+        [MapToApiVersion("1")]
+        [HttpGet("productId")]
+        public ActionResult<List<VoucherViewModel>> GetByProductId(string productId)
+        {
+            var voucherDetail = _voucherService.GetByProductId(productId);
+
+            if (voucherDetail == null)
+            {
+                return NotFound("");
+            }
+            return voucherDetail;
+        }
+
+        [MapToApiVersion("1")]
         [HttpDelete]
-        public ActionResult<bool> DeleteVoucher(int idTmp)
+        public ActionResult<bool> DeleteVoucher(string idTmp)
         {
             var check = _voucherService.DeleteVoucher(idTmp);
 

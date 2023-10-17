@@ -17,7 +17,7 @@ namespace BirdCageShop.Presentation.AutoMapperConfig
                 mc.ConfigRoleModule();
                 mc.ConfigUserModule();
                 mc.ConfigVoucherModule();
-                mc.ConfigNotificationModule();
+                mc.ConfigNotificationModule();             
             });
             IMapper mapper = mapperConfiguration.CreateMapper();
             services.AddSingleton(mapper);

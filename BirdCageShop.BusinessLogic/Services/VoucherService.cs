@@ -13,16 +13,17 @@ namespace BirdCageShop.BusinessLogic.Services
     public interface IVoucherService {
         public VoucherViewModel CreateVoucher(CreateVoucherRequestModel voucherCreate);
         public VoucherViewModel UpdateVoucher(UpdateVoucherRequestModel voucherUpdate);
-        public bool DeleteVoucher(int idTmp);
+        public bool DeleteVoucher(string idTmp);
         public List<VoucherViewModel> GetAll();
-        public VoucherViewModel GetById(int idTmp);
+        public VoucherViewModel GetById(string idTmp);
         public List<VoucherViewModel> GetByUserId(string userId);
         public List<VoucherViewModel> GetByProductId(string productId);
     }
 
     public class VoucherService : IVoucherService {
 
-      private readonly IVoucherRepository _voucherRepository;
+        private readonly IVoucherRepository _voucherRepository;
+       
         private readonly IMapper _mapper;
         public VoucherService(IVoucherRepository voucherRepository, IMapper mapper)
         {
@@ -56,7 +57,7 @@ namespace BirdCageShop.BusinessLogic.Services
             return _mapper.Map<VoucherViewModel>(voucher);
         }
 
-        public bool DeleteVoucher(int idTmp)
+        public bool DeleteVoucher(string idTmp)
         {
             var voucher = _voucherRepository.Get().SingleOrDefault(x => x.VoucherId.Equals(idTmp));
             if (voucher == null) return false;
@@ -74,7 +75,7 @@ namespace BirdCageShop.BusinessLogic.Services
             return _mapper.Map<List<VoucherViewModel>>(voucher);
         }
 
-        public VoucherViewModel GetById(int idTmp) 
+        public VoucherViewModel GetById(string idTmp) 
         {
             var voucher = _voucherRepository.Get().SingleOrDefault(x => x.VoucherId.Equals(idTmp));
 
@@ -83,17 +84,15 @@ namespace BirdCageShop.BusinessLogic.Services
 
         public List<VoucherViewModel> GetByUserId(string userId)
         {
-            var voucher = _voucherRepository.Get().ToList().Where(x => x.VoucherId.Equals(userId));
+            var voucher = _voucherRepository.Get().Where(voucher => voucher.Users.Any(user => user.UserId.Equals(userId))).ToList();
             if (voucher == null) return null;
 
             return _mapper.Map<List<VoucherViewModel>>(voucher);
         }
 
-       
-
         public List<VoucherViewModel> GetByProductId(string productId)
         {
-            var voucher = _voucherRepository.Get().ToList().Where(x => x.VoucherId.Equals(productId));
+            var voucher = _voucherRepository.Get().Where(voucher => voucher.Products.Any(product => product.ProductId.Equals(productId))).ToList();
             if (voucher == null) return null;
 
             return _mapper.Map<List<VoucherViewModel>>(voucher);
