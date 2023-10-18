@@ -38,6 +38,7 @@ namespace BirdCageShop.BusinessLogic.Services
 
             _userRepository.Create(user);
             _userRepository.Save();
+
             return _mapper.Map<UserViewModel>(user);
         }
 
@@ -53,8 +54,10 @@ namespace BirdCageShop.BusinessLogic.Services
             user.PhoneNumber= userUpdate.PhoneNumber;
             user.Email = userUpdate.Email;
             user.Image = userUpdate.Image;
+
             _userRepository.Update(user);
             _userRepository.Save();
+
             return _mapper.Map<UserViewModel>(user);
         }
 

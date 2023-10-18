@@ -37,6 +37,9 @@ namespace BirdCageShop.BusinessLogic.Services
             voucher.VoucherId = Guid.NewGuid().ToString();
             voucher.Status = (int?)VoucherStatusEnum.Active;
 
+            _voucherRepository.Create(voucher);
+            _voucherRepository.Save();
+
             return _mapper.Map<VoucherViewModel>(voucher);
         }
 
