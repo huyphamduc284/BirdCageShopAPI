@@ -79,3 +79,5 @@ C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\BirdCageShop.Presentation.pdb
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\BirdCageShop.Presentation.genruntimeconfig.cache
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\ref\BirdCageShop.Presentation.dll
+C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\bin\Release\net6.0\BirdCageShop.Presentation.xml
+C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\BirdCageShop.Presentation.xml

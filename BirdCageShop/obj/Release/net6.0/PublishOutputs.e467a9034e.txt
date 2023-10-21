@@ -58,3 +58,4 @@ C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\BirdCageShop.DataAccess.dll
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\BirdCageShop.BusinessLogic.pdb
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\BirdCageShop.DataAccess.pdb
+C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\BirdCageShop.Presentation.xml

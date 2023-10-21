@@ -14,15 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "BirdCageShop",
-        Version = "v1",
-    });
-   
-});
+builder.Services.AddSwaggerGen();
 builder.Services.ConfigureAutoMapper();
 builder.Services.InitializerDependencyInjection();
 
@@ -52,10 +44,7 @@ if (app.Environment.IsDevelopment())
     {
         options.SerializeAsV2 = true;
     });
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "BirdCageShop V1");
-    });
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

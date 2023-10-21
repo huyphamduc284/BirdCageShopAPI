@@ -185,10 +185,6 @@ namespace BirdCageShop.DataAccess.Models
                     .HasMaxLength(200)
                     .HasColumnName("ProductID");
 
-                entity.Property(e => e.BirdCageType)
-                    .HasMaxLength(50)
-                    .IsFixedLength();
-
                 entity.Property(e => e.BirdType).HasMaxLength(255);
 
                 entity.Property(e => e.Description).HasColumnType("text");

@@ -13,7 +13,7 @@ namespace Ecommerce.BusinessLogic.ViewModels
         public int? Status { get; set; }
         public int? Size { get; set; }
         public string? ProductMaterial { get; set; }
-        public string? BirdCageType { get; set; }
+        public int? BirdCageType { get; set; }
         public string? Image { get; set; }
     }
 
