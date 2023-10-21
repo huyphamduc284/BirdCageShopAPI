@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BirdCageShop.Presentation.Controllers 
 {
-    [Authorize]
+    
     [ApiController]
     [ApiVersion("1")]
     [Route("/api/v1/products")]
