@@ -270,6 +270,10 @@ namespace BirdCageShop.DataAccess.Models
 
                 entity.Property(e => e.RoleId).HasColumnName("RoleID");
 
+                entity.Property(e => e.Token)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Username).HasMaxLength(50);
 
                 entity.HasOne(d => d.Role)

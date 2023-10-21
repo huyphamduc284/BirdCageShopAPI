@@ -12,6 +12,7 @@ using BirdCageShop.BusinessLogic.Services;
 using Microsoft.EntityFrameworkCore;
 using BirdCageShop.DataAccess.Repositories;
 
+
 namespace BirdCageShop.BusinessLogic.Generations.DependencyInjection
 {
     public static class DependencyInjectionResolverGen
@@ -19,7 +20,7 @@ namespace BirdCageShop.BusinessLogic.Generations.DependencyInjection
         public static void InitializerDependencyInjection(this IServiceCollection services)
         {
             services.AddScoped<DbContext, BirdCageShopContext>();
-        
+
 
             services.AddScoped<IEquipmentService, EquipmentService>();
             services.AddScoped<IEquipmentRepository, EquipmentRepository>();

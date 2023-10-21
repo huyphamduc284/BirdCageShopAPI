@@ -16,6 +16,7 @@ namespace Ecommerce.BusinessLogic.ViewModels
         public DateTime? CreateTime { get; set; }
         public DateTime? BannedTime { get; set; }
         public string? Image { get; set; }
+        public string? Token { get; set; }
 
 
     }

@@ -1,7 +1,9 @@
 ﻿using BirdCageShop.BusinessLogic.Services;
+using BirdCageShop.DataAccess.Models;
 using Ecommerce.BusinessLogic.RequestModels.User;
 using Ecommerce.BusinessLogic.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 namespace BirdCageShop.Presentation.Controllers
 {

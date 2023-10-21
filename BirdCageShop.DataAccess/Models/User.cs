@@ -24,6 +24,7 @@ namespace BirdCageShop.DataAccess.Models
         public DateTime? CreateTime { get; set; }
         public DateTime? BannedTime { get; set; }
         public string? Image { get; set; }
+        public string? Token { get; set; }
 
         public virtual Role? Role { get; set; }
         public virtual ICollection<Notification> Notifications { get; set; }
