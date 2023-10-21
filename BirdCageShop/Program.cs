@@ -27,26 +27,19 @@ builder.Services.ConfigureAutoMapper();
 builder.Services.InitializerDependencyInjection();
 
 
-/*builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));*/
-/*
-var secretKey = builder.Configuration["AppSettings:SecretKey"];
-var secretKeyBytes = Encoding.UTF8.GetBytes(secretKey);*/
-
-/*builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(opt =>    
-                {
-                    opt.TokenValidationParameters = new TokenValidationParameters
-                    {
-                       
-                        ValidateIssuer = false,
-                        ValidateAudience = false,
-                   
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(secretKeyBytes),
-
-                        ClockSkew = TimeSpan.Zero
-                    };
-                });*/
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+    };
+});
 
 var app = builder.Build();
 

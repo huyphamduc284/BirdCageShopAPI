@@ -3,12 +3,13 @@
 using BirdCageShop.BusinessLogic.Services;
 using Ecommerce.BusinessLogic.RequestModels.Product;
 using Ecommerce.BusinessLogic.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace BirdCageShop.Presentation.Controllers 
 {
-
+    [Authorize]
     [ApiController]
     [ApiVersion("1")]
     [Route("/api/v1/products")]

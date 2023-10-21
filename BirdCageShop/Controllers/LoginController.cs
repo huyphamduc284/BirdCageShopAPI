@@ -4,6 +4,10 @@ using Ecommerce.BusinessLogic.RequestModels.User;
 using Ecommerce.BusinessLogic.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace BirdCageShop.Presentation.Controllers
 {
@@ -12,10 +16,11 @@ namespace BirdCageShop.Presentation.Controllers
     [Route("/api/v1/login")]
     public class LoginController : ControllerBase { 
         private ILoginService _loginService;
-       
-        public LoginController(ILoginService loginService)
+        private IConfiguration _configuration;
+        public LoginController(ILoginService loginService, IConfiguration configuration)
         {
              _loginService = loginService;
+            _configuration = configuration;
         }
 
         [MapToApiVersion("1")]
@@ -28,10 +33,33 @@ namespace BirdCageShop.Presentation.Controllers
 
                 if (user == null)
                 {
-                    return NotFound("");
+                    return BadRequest("Invalid Credentials");
+                }
+                else
+                {
+                    var claims = new[] {
+                        new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
+                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                        new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
+                        new Claim("UserID", user.UserId.ToString()),
+                        new Claim("UserName", user.Username),
+                        new Claim("Email", user.Email),
+                       
+                    };
+                    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+                    var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+                    var token = new JwtSecurityToken(
+                        _configuration["Jwt:Issuer"],
+                        _configuration["Jwt:Audience"],
+                        claims,
+                        expires: DateTime.UtcNow.AddMinutes(10),
+                        signingCredentials: signIn);
+
+
+                    user.Token = new JwtSecurityTokenHandler().WriteToken(token);
                 }
 
-                return user;
+                return Ok(user);
             }
             catch (Exception ex)
             {
