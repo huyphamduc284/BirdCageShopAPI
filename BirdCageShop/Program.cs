@@ -1,10 +1,7 @@
 ﻿using BirdCageShop.BusinessLogic.Generations.DependencyInjection;
-using BirdCageShop.DataAccess.Models;
 using BirdCageShop.Presentation.AutoMapperConfig;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
-using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
