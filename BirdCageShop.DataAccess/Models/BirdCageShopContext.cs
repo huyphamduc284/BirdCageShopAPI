@@ -132,6 +132,7 @@ namespace BirdCageShop.DataAccess.Models
 
                 entity.Property(e => e.ProductId)
                     .HasMaxLength(200)
+                    .IsUnicode(false)
                     .HasColumnName("ProductID");
 
                 entity.HasOne(d => d.Order)
@@ -183,6 +184,7 @@ namespace BirdCageShop.DataAccess.Models
 
                 entity.Property(e => e.ProductId)
                     .HasMaxLength(200)
+                    .IsUnicode(false)
                     .HasColumnName("ProductID");
 
                 entity.Property(e => e.BirdType).HasMaxLength(255);
@@ -214,6 +216,7 @@ namespace BirdCageShop.DataAccess.Models
 
                 entity.Property(e => e.ProductId)
                     .HasMaxLength(200)
+                    .IsUnicode(false)
                     .HasColumnName("ProductID");
 
                 entity.HasOne(d => d.Equipment)
@@ -309,7 +312,7 @@ namespace BirdCageShop.DataAccess.Models
 
                             j.IndexerProperty<string>("VoucherId").HasMaxLength(200).IsUnicode(false).HasColumnName("VoucherID");
 
-                            j.IndexerProperty<string>("ProductId").HasMaxLength(200).HasColumnName("ProductID");
+                            j.IndexerProperty<string>("ProductId").HasMaxLength(200).IsUnicode(false).HasColumnName("ProductID");
                         });
 
                 entity.HasMany(d => d.Users)
