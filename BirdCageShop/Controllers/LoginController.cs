@@ -1,9 +1,7 @@
 ﻿using BirdCageShop.BusinessLogic.Services;
-using BirdCageShop.DataAccess.Models;
 using Ecommerce.BusinessLogic.RequestModels.User;
 using Ecommerce.BusinessLogic.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;

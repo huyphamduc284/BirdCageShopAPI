@@ -58,6 +58,7 @@ namespace BirdCageShop.BusinessLogic.Generations.DependencyInjection
             services.AddScoped<IVoucherRepository, VoucherRepository>();
 
             services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<IRegisterService,RegisterService>();
 
             services.AddScoped<INotificationService, NotificationService>();
             services.AddScoped<INotificationRepository, NotificationRepository>();
