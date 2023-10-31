@@ -295,8 +295,8 @@ namespace BirdCageShop.DataAccess.Models
                 entity.Property(e => e.CouponCode).HasMaxLength(50);
 
                 entity.Property(e => e.Discount)
-                    .HasMaxLength(10)
-                    .IsFixedLength();
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.ExpirationDate).HasColumnType("date");
 
