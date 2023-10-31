@@ -47,6 +47,7 @@ namespace BirdCageShop.BusinessLogic.Services
             var user = _userRepository.Get().SingleOrDefault(x => x.UserId.Equals(userUpdate.UserId));
             if(user == null) return null;
             
+            user.UpdateTime = DateTime.Now;
             user.Username = userUpdate.Username;
             user.Password = userUpdate.Password;
             user.FirstName = userUpdate.FirstName;

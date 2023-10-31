@@ -26,10 +26,9 @@ namespace BirdCageShop.BusinessLogic.Services
 
         public bool Register(RegisterRequestModel regisRequest)
         {
-            if (regisRequest.Password != regisRequest.ConfirmPassword || regisRequest == null) return false;
             var existingUser = _userRepository.Get().SingleOrDefault(x => x.Username.Equals(regisRequest.Username));
-            if (existingUser != null) return false;
-
+            if (regisRequest.Password != regisRequest.ConfirmPassword || regisRequest == null || existingUser != null) return false;
+         
             var register = _mapper.Map<User>(regisRequest);
            
             register.UserId = Guid.NewGuid().ToString();
@@ -39,11 +38,9 @@ namespace BirdCageShop.BusinessLogic.Services
 
             _userRepository.Create(register);
             _userRepository.Save();
+
             return true;
             
         }
-   
-
-
     }
 }

@@ -6,6 +6,7 @@ using BirdCageShop.DataAccess.Models;
 using BirdCageShop.DataAccess.Repositories;
 using Ecommerce.BusinessLogic.RequestModels.Voucher;
 using Ecommerce.BusinessLogic.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BirdCageShop.BusinessLogic.Services 
 {
@@ -33,6 +34,9 @@ namespace BirdCageShop.BusinessLogic.Services
 
         public VoucherViewModel CreateVoucher(CreateVoucherRequestModel voucherCreate)
         {
+            var existingCoupon = _voucherRepository.Get().SingleOrDefault(x => x.CouponCode.Equals(voucherCreate.CouponCode));
+            if (existingCoupon != null) return null;
+
             var voucher = _mapper.Map<Voucher>(voucherCreate);
             voucher.VoucherId = Guid.NewGuid().ToString();
             voucher.Status = (int?)VoucherStatusEnum.Active;

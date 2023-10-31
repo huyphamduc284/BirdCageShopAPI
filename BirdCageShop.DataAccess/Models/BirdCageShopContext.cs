@@ -273,6 +273,8 @@ namespace BirdCageShop.DataAccess.Models
                     .HasMaxLength(200)
                     .IsUnicode(false);
 
+                entity.Property(e => e.UpdateTime).HasColumnType("datetime");
+
                 entity.Property(e => e.Username).HasMaxLength(50);
 
                 entity.HasOne(d => d.Role)
