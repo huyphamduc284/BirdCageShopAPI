@@ -54,6 +54,7 @@ namespace BirdCageShop.BusinessLogic.Services
             user.LastName = userUpdate.LastName;    
             user.PhoneNumber= userUpdate.PhoneNumber;
             user.Email = userUpdate.Email;
+            user.Address = userUpdate.Address;
             user.Image = userUpdate.Image;
 
             _userRepository.Update(user);
