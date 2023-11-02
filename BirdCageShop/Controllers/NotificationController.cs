@@ -1,5 +1,7 @@
 ﻿
+using BirdCageShop.BusinessLogic.BusinessModel.RequestModels.Notification;
 using BirdCageShop.BusinessLogic.Services;
+using BirdCageShop.DataAccess.Models;
 using Ecommerce.BusinessLogic.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +23,14 @@ namespace BirdCageShop.Presentation.Controllers
             _notificationService = notificationService;
         }
 
-      
+        [MapToApiVersion("1")]
+        [HttpPost]
+        public ActionResult<NotificationViewModel> CreateNotification(CreateNotificationRequestModel notificationCreate)
+        {
+            var notificaiton = _notificationService.CreateNotification(notificationCreate);
+            if(notificaiton == null) return NotFound("");
+            return notificaiton;
+        }
 
         [MapToApiVersion("1")]
         [HttpGet("idTmp")]
