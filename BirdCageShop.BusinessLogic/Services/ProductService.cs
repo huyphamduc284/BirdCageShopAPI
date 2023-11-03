@@ -54,6 +54,7 @@ namespace BirdCageShop.BusinessLogic.Services
             product.Description = productUpdate.Description;
             product.Status = productUpdate.Status;
             product.Size = productUpdate.Size;
+            product.Quantity = productUpdate.Quantity;
             product.ProductMaterial = productUpdate.ProductMaterial;
             product.BirdCageType = productUpdate.BirdCageType;
             product.Image = productUpdate.Image;
