@@ -62,6 +62,19 @@ namespace BirdCageShop.Presentation.Controllers
         }
 
         [MapToApiVersion("1")]
+        [HttpGet("productId")]
+        public ActionResult<int> GetQuantityById(string idTmp)
+        {
+            var quantity = _productService.GetQuantityById(idTmp);
+
+            if (quantity == null)
+            {
+                return NotFound("");
+            }
+            return quantity;
+        }
+
+        [MapToApiVersion("1")]
         [HttpDelete]
         public ActionResult<bool> DeleteProduct(string idTmp)
         {
