@@ -15,6 +15,7 @@ namespace BirdCageShop.BusinessLogic.Services
         public bool DeleteOrder(string idTmp);
         public List<OrderViewModel> GetAll();
         public OrderViewModel GetById(string idTmp);
+        public OrderViewModel GetByUserId(string userId);
     }
 
     public class OrderService : IOrderService {
@@ -99,9 +100,17 @@ namespace BirdCageShop.BusinessLogic.Services
         public OrderViewModel GetById(string idTmp) 
         {
             var order = _orderRepository.Get().SingleOrDefault(x => x.Equals(idTmp));
+            if (order == null) return null;
             return _mapper.Map<OrderViewModel>(order);
         }
 
+        public OrderViewModel GetByUserId(string userId)
+        {
+            var order = _orderRepository.Get().SingleOrDefault(x => x.UserId.Equals(userId));
+            if (order == null) return null;
+
+            return _mapper.Map<OrderViewModel>(order);
+        }
     }
 
 }

@@ -59,6 +59,18 @@ namespace BirdCageShop.Presentation.Controllers
             }
             return orderDetail;
         }
+        [MapToApiVersion("1")]
+        [HttpGet("userId")]
+        public ActionResult<OrderViewModel> GetByUserId(string idTmp)
+        {
+            var orderDetail = _orderService.GetByUserId(idTmp);
+
+            if (orderDetail == null)
+            {
+                return NotFound("Order Not Found");
+            }
+            return orderDetail;
+        }
 
         [MapToApiVersion("1")]
         [HttpDelete]

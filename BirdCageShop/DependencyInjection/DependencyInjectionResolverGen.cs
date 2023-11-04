@@ -66,6 +66,10 @@ namespace BirdCageShop.BusinessLogic.Generations.DependencyInjection
             services.AddScoped<INotificationService, NotificationService>();
             services.AddScoped<INotificationRepository, NotificationRepository>();
 
+            services.AddScoped<IReviewService , ReviewService>();
+            services.AddScoped<IReviewRepository, ReviewRepository>();
+
+
 
         }
     }
