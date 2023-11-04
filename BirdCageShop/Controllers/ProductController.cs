@@ -86,6 +86,18 @@ namespace BirdCageShop.Presentation.Controllers
             }
             return productList;
         }
+        [MapToApiVersion("1")]
+        [HttpGet("search")]
+        public ActionResult<List<ProductViewModel>> SearchProduct(string name)
+        {
+            var productList = _productService.SearchProduct(name);
+
+            if (productList == null)
+            {
+                return NotFound("");
+            }
+            return productList;
+        }
 
         [MapToApiVersion("1")]
         [HttpDelete]

@@ -16,6 +16,7 @@ namespace BirdCageShop.BusinessLogic.Services
         public bool DeleteProduct(string idTmp);
         public List<ProductViewModel> GetAll();
         public List<ProductViewModel> GetProductByCategory(int idtmp);
+        public List<ProductViewModel> SearchProduct(string name);
         public ProductViewModel GetById(string idTmp);
         public int GetQuantityById(string idTmp);
     }
@@ -107,6 +108,13 @@ namespace BirdCageShop.BusinessLogic.Services
         public List<ProductViewModel> GetProductByCategory(int idTmp)
         {
             var productList = _productRepository.Get().Where(product => product.BirdTypeId == idTmp).ToList();
+            if (productList == null) return null;
+
+            return _mapper.Map<List<ProductViewModel>>(productList);
+        }
+        public List<ProductViewModel> SearchProduct(string name)
+        {
+            var productList = _productRepository.Get().Where(product => product.ProductName.ToLower().Contains(name.ToLower())).ToList();
             if (productList == null) return null;
 
             return _mapper.Map<List<ProductViewModel>>(productList);
