@@ -166,3 +166,5 @@ D:\Web ASP.net\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\BirdCageShop.Pres
 D:\Web ASP.net\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\BirdCageShop.Presentation.pdb
 D:\Web ASP.net\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\BirdCageShop.Presentation.genruntimeconfig.cache
 D:\Web ASP.net\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\ref\BirdCageShop.Presentation.dll
+C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\bin\Release\net6.0\Humanizer.dll
+C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Design.dll
