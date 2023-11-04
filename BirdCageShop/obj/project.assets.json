@@ -18,6 +18,19 @@
           }
         }
       },
+      "Humanizer.Core/2.8.26": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Humanizer.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Authentication.JwtBearer/6.0.19": {
         "type": "package",
         "dependencies": {
@@ -225,6 +238,26 @@
         },
         "runtime": {
           "lib/netstandard2.0/_._": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Design/6.0.19": {
+        "type": "package",
+        "dependencies": {
+          "Humanizer.Core": "2.8.26",
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.19"
+        },
+        "compile": {
+          "lib/net6.0/_._": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.EntityFrameworkCore.Design.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/net6.0/Microsoft.EntityFrameworkCore.Design.props": {}
         }
       },
       "Microsoft.EntityFrameworkCore.Relational/6.0.19": {
@@ -1053,6 +1086,22 @@
         "lib/netstandard2.1/AutoMapper.xml"
       ]
     },
+    "Humanizer.Core/2.8.26": {
+      "sha512": "OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
+      "type": "package",
+      "path": "humanizer.core/2.8.26",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "humanizer.core.2.8.26.nupkg.sha512",
+        "humanizer.core.nuspec",
+        "lib/netstandard1.0/Humanizer.dll",
+        "lib/netstandard1.0/Humanizer.xml",
+        "lib/netstandard2.0/Humanizer.dll",
+        "lib/netstandard2.0/Humanizer.xml",
+        "logo.png"
+      ]
+    },
     "Microsoft.AspNetCore.Authentication.JwtBearer/6.0.19": {
       "sha512": "gdSF/N7ETakCeVONpiqHivv1aUY8DYXn/9CAi9UJuauSeRK0l0AM7kG5gB+e2zkl4o9zxrS6oVfkWT4lYLxCZw==",
       "type": "package",
@@ -1356,6 +1405,21 @@
         "lib/netstandard2.0/_._",
         "microsoft.entityframeworkcore.analyzers.6.0.19.nupkg.sha512",
         "microsoft.entityframeworkcore.analyzers.nuspec"
+      ]
+    },
+    "Microsoft.EntityFrameworkCore.Design/6.0.19": {
+      "sha512": "wZ+Xxqa0pw1mlFFNvgvul2W1VuwDIWL3DcxsCA7yvLilT8iuT+3qjLHlvSz4c2I4xLhGDFH0w+VzBzQVrb6j0w==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.design/6.0.19",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "build/net6.0/Microsoft.EntityFrameworkCore.Design.props",
+        "lib/net6.0/Microsoft.EntityFrameworkCore.Design.dll",
+        "lib/net6.0/Microsoft.EntityFrameworkCore.Design.xml",
+        "microsoft.entityframeworkcore.design.6.0.19.nupkg.sha512",
+        "microsoft.entityframeworkcore.design.nuspec"
       ]
     },
     "Microsoft.EntityFrameworkCore.Relational/6.0.19": {
@@ -2582,6 +2646,7 @@
     "net6.0": [
       "AutoMapper >= 12.0.1",
       "BirdCageShop.BusinessLogic >= 1.0.0",
+      "Microsoft.EntityFrameworkCore.Design >= 6.0.19",
       "NTQ.Sdk.Core >= 1.1.7",
       "Swashbuckle.AspNetCore >= 6.2.3",
       "Swashbuckle.AspNetCore.Swagger >= 6.5.0",
@@ -2590,24 +2655,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yoga\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Tran Ngoc Tu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShopAPI\\BirdCageShop\\BirdCageShop.Presentation.csproj",
+      "projectUniqueName": "D:\\Web ASP.net\\BirdCageShopAPI\\BirdCageShop\\BirdCageShop.Presentation.csproj",
       "projectName": "BirdCageShop.Presentation",
-      "projectPath": "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShopAPI\\BirdCageShop\\BirdCageShop.Presentation.csproj",
-      "packagesPath": "C:\\Users\\yoga\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShopAPI\\BirdCageShop\\obj\\",
+      "projectPath": "D:\\Web ASP.net\\BirdCageShopAPI\\BirdCageShop\\BirdCageShop.Presentation.csproj",
+      "packagesPath": "C:\\Users\\Tran Ngoc Tu\\.nuget\\packages\\",
+      "outputPath": "D:\\Web ASP.net\\BirdCageShopAPI\\BirdCageShop\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\yoga\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Tran Ngoc Tu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2615,15 +2675,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShopAPI\\BirdCageShop.BusinessLogic\\BirdCageShop.BusinessLogic.csproj": {
-              "projectPath": "C:\\Users\\yoga\\Desktop\\FU\\Kỳ 5\\SWP391\\BirdCageShopAPI\\BirdCageShop.BusinessLogic\\BirdCageShop.BusinessLogic.csproj"
+            "D:\\Web ASP.net\\BirdCageShopAPI\\BirdCageShop.BusinessLogic\\BirdCageShop.BusinessLogic.csproj": {
+              "projectPath": "D:\\Web ASP.net\\BirdCageShopAPI\\BirdCageShop.BusinessLogic\\BirdCageShop.BusinessLogic.csproj"
             }
           }
         }
@@ -2641,6 +2700,12 @@
           "AutoMapper": {
             "target": "Package",
             "version": "[12.0.1, )"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[6.0.19, )"
           },
           "NTQ.Sdk.Core": {
             "target": "Package",
@@ -2682,7 +2747,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

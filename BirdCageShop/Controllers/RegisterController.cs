@@ -23,6 +23,7 @@ namespace BirdCageShop.Presentation.Controllers
         [HttpPost]
         public ActionResult<RegisterViewModel> Register(RegisterRequestModel registerRequest)
         {
+            
             var register = _registerService.Register(registerRequest);
             if (register == false) return BadRequest();
 
