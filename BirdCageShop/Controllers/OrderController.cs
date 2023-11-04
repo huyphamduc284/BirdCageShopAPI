@@ -2,6 +2,7 @@
 
 using BirdCageShop.BusinessLogic.Services;
 using Ecommerce.BusinessLogic.RequestModels.Order;
+using Ecommerce.BusinessLogic.RequestModels.OrderDetail;
 using Ecommerce.BusinessLogic.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,9 +24,9 @@ namespace BirdCageShop.Presentation.Controllers
 
         [MapToApiVersion("1")]
         [HttpPost]
-        public ActionResult<OrderViewModel> CreateOrder(CreateOrderRequestModel orderCreate)
+        public ActionResult<OrderViewModel> CreateOrder(CreateOrderRequestModel orderCreate, List<CreateOrderDetailRequestModel> orderDetails)
         {
-            var orderCreated = _orderService.CreateOrder(orderCreate);
+            var orderCreated = _orderService.CreateOrder(orderCreate, orderDetails);
 
             if (orderCreated == null)
             {

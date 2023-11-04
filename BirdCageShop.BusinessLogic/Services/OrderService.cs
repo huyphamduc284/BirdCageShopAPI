@@ -4,13 +4,15 @@ using BirdCageShop.BusinessLogic.Enums;
 using BirdCageShop.DataAccess.Models;
 using BirdCageShop.DataAccess.Repositories;
 using Ecommerce.BusinessLogic.RequestModels.Order;
+using Ecommerce.BusinessLogic.RequestModels.OrderDetail;
+using Ecommerce.BusinessLogic.RequestModels.Product;
 using Ecommerce.BusinessLogic.ViewModels;
 
 namespace BirdCageShop.BusinessLogic.Services 
 {
 
     public interface IOrderService {
-        public OrderViewModel CreateOrder(CreateOrderRequestModel orderCreate);
+        public OrderViewModel CreateOrder(CreateOrderRequestModel orderCreate, List<CreateOrderDetailRequestModel> orderDetails);
         public OrderViewModel UpdateOrder(UpdateOrderRequestModel orderUpdate);
         public bool DeleteOrder(string idTmp);
         public List<OrderViewModel> GetAll();
@@ -30,7 +32,7 @@ namespace BirdCageShop.BusinessLogic.Services
             _mapper = mapper;
         }
 
-        public OrderViewModel CreateOrder(CreateOrderRequestModel orderCreate)
+        public OrderViewModel CreateOrder(CreateOrderRequestModel orderCreate, List<CreateOrderDetailRequestModel> orderDetails)
         {
             var order = _mapper.Map<Order>(orderCreate);
             var processingTimeInDay = 3;
@@ -44,18 +46,13 @@ namespace BirdCageShop.BusinessLogic.Services
 
             _orderRepository.Create(order);
             _orderRepository.Save();
-           /* foreach (var product in orderCreate.produ)
+            foreach (var product in orderDetails)
             {
-                var orderDetail = new OrderDetail
-                {
-                    OrderId = order.OrderId,
-                    ProductId = product.ProductId,
-                    Quantity = product.Quantity,
-                  
-                };
+                var orderDetail = _mapper.Map<OrderDetail>(product);
 
                 _orderDetailRepository.Create(orderDetail);
-            }*/
+                _orderDetailRepository.Save();
+            }
 
             return _mapper.Map<OrderViewModel>(order);
         }
