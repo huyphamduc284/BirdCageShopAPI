@@ -24,6 +24,7 @@ namespace BirdCageShop.DataAccess.Models
         public virtual DbSet<Payment> Payments { get; set; } = null!;
         public virtual DbSet<Product> Products { get; set; } = null!;
         public virtual DbSet<ProductEquipment> ProductEquipments { get; set; } = null!;
+        public virtual DbSet<Review> Reviews { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
         public virtual DbSet<Voucher> Vouchers { get; set; } = null!;
@@ -239,6 +240,35 @@ namespace BirdCageShop.DataAccess.Models
                     .WithMany(p => p.ProductEquipments)
                     .HasForeignKey(d => d.ProductId)
                     .HasConstraintName("FK__ProductEq__Produ__49C3F6B7");
+            });
+
+            modelBuilder.Entity<Review>(entity =>
+            {
+                entity.ToTable("Review");
+
+                entity.Property(e => e.ReviewId)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ProductId)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.TimeStamp).HasColumnType("datetime");
+
+                entity.Property(e => e.UserId)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.Reviews)
+                    .HasForeignKey(d => d.ProductId)
+                    .HasConstraintName("FK_Review_Product");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Reviews)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK_Review_User");
             });
 
             modelBuilder.Entity<Role>(entity =>

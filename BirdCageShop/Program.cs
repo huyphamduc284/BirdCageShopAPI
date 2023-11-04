@@ -29,6 +29,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     };
 });
+//add service to container
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(option =>
+{
+    option.AddPolicy(name: MyAllowSpecificOrigins,
+                        policy =>
+                        {
+                            policy.WithOrigins("https://localhost:3000").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+                        });
+});
 
 var app = builder.Build();
 
@@ -43,16 +53,7 @@ if (app.Environment.IsDevelopment())
     });
     app.UseSwaggerUI();
 }
-//add service to container
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-builder.Services.AddCors(option =>
-{
-    option.AddPolicy(name: MyAllowSpecificOrigins,
-                        policy =>
-                        {
-                            policy.WithOrigins("https://localhost:3000").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
-                        });
-});
+
 app.UseHttpsRedirection();
 
 app.UseAuthentication();

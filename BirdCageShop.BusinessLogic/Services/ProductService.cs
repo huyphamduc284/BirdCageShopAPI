@@ -59,7 +59,7 @@ namespace BirdCageShop.BusinessLogic.Services
             product.ProductMaterial = productUpdate.ProductMaterial;
             product.BirdCageType = productUpdate.BirdCageType;
             product.Image = productUpdate.Image;
-            product.Rating = productUpdate.Rating;
+    
 
             _productRepository.Update(product);
             _productRepository.Save();
