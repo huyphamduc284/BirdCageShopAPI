@@ -5,7 +5,6 @@ namespace Ecommerce.BusinessLogic.ViewModels
     {
         public int BirdTypeId { get; set; }
         public string? Name { get; set; }
-        public string? Image { get; set; }
-
+    
     }
 }
