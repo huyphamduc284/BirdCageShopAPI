@@ -247,6 +247,10 @@ namespace BirdCageShop.DataAccess.Models
                     .IsUnicode(false)
                     .HasColumnName("UserID");
 
+                entity.Property(e => e.Address)
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.BannedTime).HasColumnType("datetime");
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");

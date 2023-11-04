@@ -29,7 +29,7 @@ namespace BirdCageShop.Presentation.Controllers
 
             if (orderCreated == null)
             {
-                return NotFound("");
+                return NotFound("Fail to Create Order");
             }
             return orderCreated;
         }
@@ -42,7 +42,7 @@ namespace BirdCageShop.Presentation.Controllers
 
             if (orderList == null)
             {
-                return NotFound("");
+                return NotFound("Orders Not Found");
             }
             return orderList;
         }
@@ -55,7 +55,7 @@ namespace BirdCageShop.Presentation.Controllers
 
             if (orderDetail == null)
             {
-                return NotFound("");
+                return NotFound("Order Not Found");
             }
             return orderDetail;
         }
@@ -68,7 +68,7 @@ namespace BirdCageShop.Presentation.Controllers
 
             if (check == false)
             {
-                return NotFound("");
+                return NotFound("Fail To Delete Order");
             }
             return check;
         }
@@ -81,7 +81,7 @@ namespace BirdCageShop.Presentation.Controllers
 
             if (orderUpdated == null)
             {
-                return NotFound("");
+                return NotFound("Fail To Update Order");
             }
             return orderUpdated;
         }
