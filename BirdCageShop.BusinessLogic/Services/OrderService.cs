@@ -19,7 +19,8 @@ namespace BirdCageShop.BusinessLogic.Services
 
     public class OrderService : IOrderService {
 
-      private readonly IOrderRepository _orderRepository;
+        private readonly IOrderRepository _orderRepository;
+        private readonly IOrderDetailRepository _orderDetailRepository;
         private readonly IMapper _mapper;
 
         public OrderService(IOrderRepository orderRepository, IMapper mapper)
@@ -42,6 +43,18 @@ namespace BirdCageShop.BusinessLogic.Services
 
             _orderRepository.Create(order);
             _orderRepository.Save();
+            foreach (var product in orderCreate.Products)
+            {
+                var orderDetail = new OrderDetail
+                {
+                    OrderId = order.OrderId,
+                    ProductId = product.ProductId,
+                    Quantity = product.Quantity,
+                  
+                };
+
+                _orderDetailRepository.Create(orderDetail);
+            }
 
             return _mapper.Map<OrderViewModel>(order);
         }
