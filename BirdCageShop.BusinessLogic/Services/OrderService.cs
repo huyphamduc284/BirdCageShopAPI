@@ -41,11 +41,11 @@ namespace BirdCageShop.BusinessLogic.Services
             order.OrderId = Guid.NewGuid().ToString();          
             order.OrderDate = DateTime.Now;        
             order.OrderStatus = (int?)OrderStatusEnum.Pending;
-
             order.ExpectedDeliveryDate = expectedDeliveryDate;
 
             _orderRepository.Create(order);
             _orderRepository.Save();
+
             foreach (var product in orderDetails)
             {
                 var orderDetail = _mapper.Map<OrderDetail>(product);
@@ -53,6 +53,7 @@ namespace BirdCageShop.BusinessLogic.Services
                 _orderDetailRepository.Create(orderDetail);
                 _orderDetailRepository.Save();
             }
+            _orderDetailRepository.Save();
 
             return _mapper.Map<OrderViewModel>(order);
         }
