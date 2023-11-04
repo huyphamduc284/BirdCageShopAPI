@@ -75,6 +75,19 @@ namespace BirdCageShop.Presentation.Controllers
         }
 
         [MapToApiVersion("1")]
+        [HttpGet("cateId")]
+        public ActionResult<List<ProductViewModel>> GetProductByCategory(int cateId)
+        {
+            var productList = _productService.GetProductByCategory(cateId);
+
+            if (productList == null)
+            {
+                return NotFound("");
+            }
+            return productList;
+        }
+
+        [MapToApiVersion("1")]
         [HttpDelete]
         public ActionResult<bool> DeleteProduct(string idTmp)
         {
