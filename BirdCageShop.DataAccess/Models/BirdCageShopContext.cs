@@ -16,6 +16,7 @@ namespace BirdCageShop.DataAccess.Models
         {
         }
 
+        public virtual DbSet<BirdTypeCategory> BirdTypeCategories { get; set; } = null!;
         public virtual DbSet<Equipment> Equipment { get; set; } = null!;
         public virtual DbSet<Notification> Notifications { get; set; } = null!;
         public virtual DbSet<Order> Orders { get; set; } = null!;
@@ -38,6 +39,17 @@ namespace BirdCageShop.DataAccess.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<BirdTypeCategory>(entity =>
+            {
+                entity.HasKey(e => e.BirdTypeId);
+
+                entity.ToTable("BirdTypeCategory");
+
+                entity.Property(e => e.BirdTypeId).ValueGeneratedNever();
+
+                entity.Property(e => e.Name).HasMaxLength(225);
+            });
+
             modelBuilder.Entity<Equipment>(entity =>
             {
                 entity.Property(e => e.EquipmentId)
@@ -185,8 +197,6 @@ namespace BirdCageShop.DataAccess.Models
                     .IsUnicode(false)
                     .HasColumnName("ProductID");
 
-                entity.Property(e => e.BirdType).HasMaxLength(255);
-
                 entity.Property(e => e.Description).HasColumnType("text");
 
                 entity.Property(e => e.Model).HasMaxLength(255);
@@ -196,6 +206,11 @@ namespace BirdCageShop.DataAccess.Models
                 entity.Property(e => e.ProductMaterial).HasMaxLength(100);
 
                 entity.Property(e => e.ProductName).HasMaxLength(255);
+
+                entity.HasOne(d => d.BirdType)
+                    .WithMany(p => p.Products)
+                    .HasForeignKey(d => d.BirdTypeId)
+                    .HasConstraintName("FK_Product_BirdTypeCategory");
             });
 
             modelBuilder.Entity<ProductEquipment>(entity =>

@@ -43,7 +43,7 @@ namespace BirdCageShop.BusinessLogic.Services
 
             _orderRepository.Create(order);
             _orderRepository.Save();
-            foreach (var product in orderCreate.Products)
+           /* foreach (var product in orderCreate.produ)
             {
                 var orderDetail = new OrderDetail
                 {
@@ -54,7 +54,7 @@ namespace BirdCageShop.BusinessLogic.Services
                 };
 
                 _orderDetailRepository.Create(orderDetail);
-            }
+            }*/
 
             return _mapper.Map<OrderViewModel>(order);
         }

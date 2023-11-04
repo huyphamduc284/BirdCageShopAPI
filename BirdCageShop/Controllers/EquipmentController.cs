@@ -1,9 +1,4 @@
 
-
-
-
-
-
 using BirdCageShop.BusinessLogic.Services;
 using Ecommerce.BusinessLogic.RequestModels.Equipment;
 using Ecommerce.BusinessLogic.ViewModels;

@@ -48,10 +48,10 @@ namespace BirdCageShop.BusinessLogic.Services
         {
             var product = _productRepository.Get().SingleOrDefault(x => x.ProductId.Equals(productUpdate.ProductId));
             if (product == null) return null;
-            product.ProductName = productUpdate.ProductName;
-            product.BirdType = productUpdate.BirdType;
+            product.ProductName = productUpdate.ProductName;           
             product.Model = productUpdate.Model;
             product.Price = productUpdate.Price;
+            product.BirdTypeId = productUpdate.BirdTypeId;
             product.Description = productUpdate.Description;
             product.Status = productUpdate.Status;
             product.Size = productUpdate.Size;

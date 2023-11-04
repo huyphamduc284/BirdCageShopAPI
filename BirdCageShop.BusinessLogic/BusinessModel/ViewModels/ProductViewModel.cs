@@ -6,7 +6,7 @@ namespace Ecommerce.BusinessLogic.ViewModels
     public class ProductViewModel {
         public string ProductId { get; set; } = null!;
         public string? ProductName { get; set; }
-        public string? BirdType { get; set; }
+        public int? BirdTypeId { get; set; }
         public string? Model { get; set; }
         public decimal? Price { get; set; }
         public string? Description { get; set; }

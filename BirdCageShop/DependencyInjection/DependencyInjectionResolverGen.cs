@@ -40,7 +40,10 @@ namespace BirdCageShop.BusinessLogic.Generations.DependencyInjection
 
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductRepository, ProductRepository>();
-        
+
+            services.AddScoped<IBirdTypeCategoryService, BirdTypeCategoryService>();
+            services.AddScoped<IBirdTypeCategoryRepository, BirdTypeCategoryRepository>();
+
 
             services.AddScoped<IProductEquipmentService, ProductEquipmentService>();
             services.AddScoped<IProductEquipmentRepository, ProductEquipmentRepository>();
