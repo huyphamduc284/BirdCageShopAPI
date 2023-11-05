@@ -42,17 +42,7 @@ namespace BirdCageShop.BusinessLogic.Services
 
             return _mapper.Map<LoginViewModel>(user);
         }
-        /*    private string GenerateToken(User user)
-            {
-                var jwtTokenHandler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
-
-                var secretKeyBytes = System.Text.Encoding.UTF8.GetBytes(_appSettings.SecretKey);
-
-
-                var token = jwtTokenHandler.CreateToken(tokenDescription);
-
-                return jwtTokenHandler.WriteToken(token);
-            }*/
+     
         public class PasswordHasher
         {
             public static string HashPassword(string password)

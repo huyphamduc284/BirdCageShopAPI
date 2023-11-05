@@ -12,6 +12,8 @@ namespace BirdCageShop.BusinessLogic.Services
         public OrderDetailViewModel CreateOrderDetail(CreateOrderDetailRequestModel orderdetailCreate);
         public OrderDetailViewModel UpdateOrderDetail(UpdateOrderDetailRequestModel orderdetailUpdate);
         public bool DeleteOrderDetail(string idTmp);
+        public bool DeleteByOrderId(string idTmp);
+
         public List<OrderDetailViewModel> GetAll();
         public OrderDetailViewModel GetById(string idTmp);
     }
@@ -72,6 +74,14 @@ namespace BirdCageShop.BusinessLogic.Services
             return _mapper.Map<OrderDetailViewModel>(orderDetail);
         }
 
+        public bool DeleteByOrderId(string idTmp)
+        {
+            var orderDetail = _orderdetailRepository.Get().SingleOrDefault(x => x.OrderId.Equals(idTmp));
+            if (orderDetail == null) return false;
+            _orderdetailRepository.Delete(orderDetail);
+            _orderdetailRepository.Save();
+            return true;
+        }
     }
 
 }

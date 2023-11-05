@@ -114,12 +114,14 @@ namespace BirdCageShop.DataAccess.Models
 
                 entity.Property(e => e.State).HasMaxLength(200);
 
+                entity.Property(e => e.TotalPrice).HasColumnType("decimal(10, 2)");
+
                 entity.Property(e => e.UserId)
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("UserID");
 
-                entity.Property(e => e.ZipCode)
+                entity.Property(e => e.Voucher)
                     .HasMaxLength(50)
                     .IsUnicode(false);
 

@@ -7,6 +7,7 @@ namespace Ecommerce.BusinessLogic.ViewModels
         public string OrderId { get; set; } = null!;
         public string? UserId { get; set; }
         public DateTime? OrderDate { get; set; }
+        public decimal? TotalPrice { get; set; }
         public DateTime? ExpectedDeliveryDate { get; set; }
         public string? OrderStatus { get; set; }
         public string? Address { get; set; }
