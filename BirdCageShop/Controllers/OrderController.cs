@@ -98,6 +98,18 @@ namespace BirdCageShop.Presentation.Controllers
             }
             return orderUpdated;
         }
+        [MapToApiVersion("1")]
+        [HttpPut("orderId")]
+        public ActionResult<OrderViewModel> UpdateOrderById(UpdateOrderByIdRequestModel orderStatusUpdate)
+        {
+            var orderUpdated = _orderService.UpdateOrderById(orderStatusUpdate);
+
+            if (orderUpdated == null)
+            {
+                return NotFound("Fail To Update Order");
+            }
+            return orderUpdated;
+        }
     }
 
 }

@@ -14,6 +14,8 @@ namespace BirdCageShop.BusinessLogic.Services
     public interface IOrderService {
         public OrderViewModel CreateOrder(CreateOrderRequestModel orderCreate/*, List<CreateOrderDetailRequestModel> orderDetails*/);
         public OrderViewModel UpdateOrder(UpdateOrderRequestModel orderUpdate);
+        public OrderViewModel UpdateOrderById(UpdateOrderByIdRequestModel orderStatusUpdate);
+
         public bool DeleteOrder(string idTmp);
         public List<OrderViewModel> GetAll();
         public OrderViewModel GetById(string idTmp);
@@ -109,6 +111,29 @@ namespace BirdCageShop.BusinessLogic.Services
         {
             var order = _orderRepository.Get().SingleOrDefault(x => x.UserId.Equals(userId));
             if (order == null) return null;
+
+            return _mapper.Map<OrderViewModel>(order);
+        }
+
+        public OrderViewModel UpdateOrderById(UpdateOrderByIdRequestModel orderStatusUpdate)
+        {
+            var order = _orderRepository.Get().SingleOrDefault(x => x.OrderId.Equals(orderStatusUpdate.OrderId));
+            if (orderStatusUpdate.OrderStatus.Equals("Pending")){
+                order.OrderStatus = (int?)OrderStatusEnum.Pending;
+            }else if (orderStatusUpdate.OrderStatus.Equals("Processing")){
+                order.OrderStatus = (int?)OrderStatusEnum.Processing;
+            }
+            else if (orderStatusUpdate.OrderStatus.Equals("Shipped")){
+                order.OrderStatus = (int?)OrderStatusEnum.Shipped;
+            }
+            else if (orderStatusUpdate.OrderStatus.Equals("Delivered")){
+                order.OrderStatus = (int?)OrderStatusEnum.Delivered;
+            }
+            else if (orderStatusUpdate.OrderStatus.Equals("Cancelled")){
+                order.OrderStatus = (int?)OrderStatusEnum.Cancelled;
+            }
+            _orderRepository.Update(order);
+            _orderRepository.Save();
 
             return _mapper.Map<OrderViewModel>(order);
         }
