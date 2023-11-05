@@ -40,7 +40,7 @@ namespace BirdCageShop.BusinessLogic.Services
         {
             var order = _mapper.Map<Order>(orderCreate);
             var processingTimeInDay = 3;
-            var expectedDeliveryDate = order.OrderDate.Value.AddDays(processingTimeInDay);
+            var expectedDeliveryDate = DateTime.Now;
 
             order.OrderId = Guid.NewGuid().ToString();
             order.OrderDate = DateTime.Now;        
@@ -57,7 +57,7 @@ namespace BirdCageShop.BusinessLogic.Services
                 _orderDetailRepository.Create(orderDetail);
                 _orderDetailRepository.Save();
             }*/
-            _orderDetailRepository.Save();
+        
 
             return _mapper.Map<OrderViewModel>(order);
         }
