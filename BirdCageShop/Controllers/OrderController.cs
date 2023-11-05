@@ -24,9 +24,9 @@ namespace BirdCageShop.Presentation.Controllers
 
         [MapToApiVersion("1")]
         [HttpPost]
-        public ActionResult<OrderViewModel> CreateOrder(CreateOrderRequestModel orderCreate, List<CreateOrderDetailRequestModel> orderDetails)
+        public ActionResult<OrderViewModel> CreateOrder(CreateOrderRequestModel orderCreate/*, List<CreateOrderDetailRequestModel> orderDetails*/)
         {
-            var orderCreated = _orderService.CreateOrder(orderCreate, orderDetails);
+            var orderCreated = _orderService.CreateOrder(orderCreate/*, orderDetails*/);
 
             if (orderCreated == null)
             {

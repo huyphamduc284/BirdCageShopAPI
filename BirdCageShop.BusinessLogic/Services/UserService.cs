@@ -5,6 +5,8 @@ using BirdCageShop.DataAccess.Models;
 using BirdCageShop.DataAccess.Repositories;
 using Ecommerce.BusinessLogic.RequestModels.User;
 using Ecommerce.BusinessLogic.ViewModels;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 
 namespace BirdCageShop.BusinessLogic.Services 
 {
@@ -15,14 +17,16 @@ namespace BirdCageShop.BusinessLogic.Services
         public bool DeleteUser(string idTmp);
         public List<UserViewModel> GetAll();
         public UserViewModel GetById(string idTmp);
+       /* public string GetCurrentUserId();*/
     }
 
     public class UserService : IUserService {
 
       private readonly IUserRepository _userRepository;
-      private readonly IMapper _mapper;
+        /*private readonly IHttpContextAccessor _httpContextAccessor;*/
+        private readonly IMapper _mapper;
 
-        public UserService(IUserRepository userRepository, IMapper mapper)
+        public UserService(IUserRepository userRepository, IMapper mapper/*, IHttpContextAccessor _httpContextAccessor*/)
         {
             _userRepository = userRepository;
             _mapper = mapper;
@@ -87,6 +91,12 @@ namespace BirdCageShop.BusinessLogic.Services
             var user = _userRepository.Get().SingleOrDefault(x => x.UserId.Equals(idTmp));
             return _mapper.Map<UserViewModel>(user);
         }
+      /*  public string GetCurrentUserId()
+        {
+            // Get current user's ID from the HttpContext or wherever the user information is stored
+            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return userId;
+        }*/
 
     }
 

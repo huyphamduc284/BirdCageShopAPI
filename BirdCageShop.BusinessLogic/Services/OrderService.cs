@@ -12,7 +12,7 @@ namespace BirdCageShop.BusinessLogic.Services
 {
 
     public interface IOrderService {
-        public OrderViewModel CreateOrder(CreateOrderRequestModel orderCreate, List<CreateOrderDetailRequestModel> orderDetails);
+        public OrderViewModel CreateOrder(CreateOrderRequestModel orderCreate/*, List<CreateOrderDetailRequestModel> orderDetails*/);
         public OrderViewModel UpdateOrder(UpdateOrderRequestModel orderUpdate);
         public bool DeleteOrder(string idTmp);
         public List<OrderViewModel> GetAll();
@@ -24,21 +24,24 @@ namespace BirdCageShop.BusinessLogic.Services
 
         private readonly IOrderRepository _orderRepository;
         private readonly IOrderDetailRepository _orderDetailRepository;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
-        public OrderService(IOrderRepository orderRepository, IMapper mapper)
+        public OrderService(IOrderRepository orderRepository, IMapper mapper, IUserService userService)
         {
             _orderRepository = orderRepository;
             _mapper = mapper;
+            _userService = userService;
         }
 
-        public OrderViewModel CreateOrder(CreateOrderRequestModel orderCreate, List<CreateOrderDetailRequestModel> orderDetails)
+        public OrderViewModel CreateOrder(CreateOrderRequestModel orderCreate/*, List<CreateOrderDetailRequestModel> orderDetails*/)
         {
             var order = _mapper.Map<Order>(orderCreate);
             var processingTimeInDay = 3;
             var expectedDeliveryDate = order.OrderDate.Value.AddDays(processingTimeInDay);
 
-            order.OrderId = Guid.NewGuid().ToString();          
+            order.OrderId = Guid.NewGuid().ToString();   
+           /* order.UserId = _userService.GetCurrentUserId();*/
             order.OrderDate = DateTime.Now;        
             order.OrderStatus = (int?)OrderStatusEnum.Pending;
             order.ExpectedDeliveryDate = expectedDeliveryDate;
@@ -46,13 +49,13 @@ namespace BirdCageShop.BusinessLogic.Services
             _orderRepository.Create(order);
             _orderRepository.Save();
 
-            foreach (var product in orderDetails)
+         /*   foreach (var product in orderDetails)
             {
                 var orderDetail = _mapper.Map<OrderDetail>(product);
 
                 _orderDetailRepository.Create(orderDetail);
                 _orderDetailRepository.Save();
-            }
+            }*/
             _orderDetailRepository.Save();
 
             return _mapper.Map<OrderViewModel>(order);

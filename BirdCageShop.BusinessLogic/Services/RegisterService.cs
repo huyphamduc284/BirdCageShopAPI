@@ -3,7 +3,7 @@ using BirdCageShop.BusinessLogic.BusinessModel.RequestModels.User;
 using BirdCageShop.BusinessLogic.Enums;
 using BirdCageShop.DataAccess.Models;
 using BirdCageShop.DataAccess.Repositories;
-
+using static BirdCageShop.BusinessLogic.Services.LoginService;
 
 namespace BirdCageShop.BusinessLogic.Services
 {
@@ -30,7 +30,8 @@ namespace BirdCageShop.BusinessLogic.Services
             if (regisRequest.Password != regisRequest.ConfirmPassword || regisRequest == null || existingUser != null) return false;
          
             var register = _mapper.Map<User>(regisRequest);
-           
+            register.Password = PasswordHasher.HashPassword(regisRequest.Password);
+
             register.UserId = Guid.NewGuid().ToString();
             register.RoleId = (int?)UserRoleEnum.Customer;
             register.CreateTime = DateTime.Now;
