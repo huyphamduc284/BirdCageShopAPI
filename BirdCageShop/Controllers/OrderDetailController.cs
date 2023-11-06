@@ -22,7 +22,7 @@ namespace BirdCageShop.Presentation.Controllers
 
         [MapToApiVersion("1")]
         [HttpPost]
-        public ActionResult<OrderDetailViewModel> CreateOrderDetail(CreateOrderDetailRequestModel orderdetailCreate)
+        public ActionResult<List<OrderDetailViewModel>> CreateOrderDetail(List<CreateOrderDetailRequestModel> orderdetailCreate)
         {
             var orderdetailCreated = _orderdetailService.CreateOrderDetail(orderdetailCreate);
 

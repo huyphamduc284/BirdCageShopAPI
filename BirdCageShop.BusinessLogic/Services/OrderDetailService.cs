@@ -9,7 +9,7 @@ namespace BirdCageShop.BusinessLogic.Services
 {
 
     public interface IOrderDetailService {
-        public OrderDetailViewModel CreateOrderDetail(CreateOrderDetailRequestModel orderdetailCreate);
+        public List<OrderDetailViewModel> CreateOrderDetail(List<CreateOrderDetailRequestModel> orderdetailCreate);
         public OrderDetailViewModel UpdateOrderDetail(UpdateOrderDetailRequestModel orderdetailUpdate);
         public bool DeleteOrderDetail(string idTmp);
         public bool DeleteByOrderId(string idTmp);
@@ -29,15 +29,22 @@ namespace BirdCageShop.BusinessLogic.Services
             _mapper = mapper;
         }
 
-        public OrderDetailViewModel CreateOrderDetail(CreateOrderDetailRequestModel orderdetailCreate)
+        public List<OrderDetailViewModel> CreateOrderDetail(List<CreateOrderDetailRequestModel> orderdetailCreate)
         {
-            var orderDetail = _mapper.Map<OrderDetail>(orderdetailCreate);
-            orderDetail.OrderDetailId = Guid.NewGuid().ToString();
+            var orderDetails = new List<OrderDetailViewModel>();
+            foreach (var detailRequest in orderdetailCreate)
+            {
+                var orderDetail = _mapper.Map<OrderDetail>(detailRequest);
+                orderDetail.OrderDetailId = Guid.NewGuid().ToString();
 
-            _orderdetailRepository.Create(orderDetail);
+                _orderdetailRepository.Create(orderDetail);
+                orderDetails.Add(_mapper.Map<OrderDetailViewModel>(orderDetail));
+
+            }
+                   
             _orderdetailRepository.Save();
 
-            return _mapper.Map<OrderDetailViewModel>(orderDetail);
+            return orderDetails;
 
         }
 
