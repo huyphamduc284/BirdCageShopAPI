@@ -16,12 +16,14 @@ namespace BirdCageShop.BusinessLogic.Services
         public OrderViewModel UpdateOrder(UpdateOrderRequestModel orderUpdate);
         public OrderViewModel UpdateOrderById(UpdateOrderByIdRequestModel orderStatusUpdate);
         public OrderViewModel AssignEmployee(AssignEmpRequestModel assignEmpRequest);
-
+        
 
         public bool DeleteOrder(string idTmp);
         public List<OrderViewModel> GetAll();
         public OrderViewModel GetById(string idTmp);
         public OrderViewModel GetByUserId(string userId);
+        public List<OrderViewModel> GetOrderByEmpId(string empId);
+
     }
 
     public class OrderService : IOrderService {
@@ -151,6 +153,14 @@ namespace BirdCageShop.BusinessLogic.Services
             _orderRepository.Save();
 
             return _mapper.Map<OrderViewModel>(order);
+        }
+
+        public List<OrderViewModel> GetOrderByEmpId(string empId)
+        {
+            var order = _orderRepository.Get().Where(x => x.AssignedEmp.Equals(empId)).ToList();
+            if (order == null) return null;
+
+            return _mapper.Map<List<OrderViewModel>>(order);
         }
     }
 
