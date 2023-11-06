@@ -100,6 +100,10 @@ namespace BirdCageShop.DataAccess.Models
 
                 entity.Property(e => e.Address).HasMaxLength(200);
 
+                entity.Property(e => e.AssignedEmp)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Comment).HasMaxLength(200);
 
                 entity.Property(e => e.Country).HasMaxLength(200);
@@ -200,6 +204,10 @@ namespace BirdCageShop.DataAccess.Models
                     .IsUnicode(false)
                     .HasColumnName("ProductID");
 
+                entity.Property(e => e.Color)
+                    .HasMaxLength(50)
+                    .IsFixedLength();
+
                 entity.Property(e => e.Description).HasColumnType("text");
 
                 entity.Property(e => e.Model).HasMaxLength(255);
@@ -209,6 +217,8 @@ namespace BirdCageShop.DataAccess.Models
                 entity.Property(e => e.ProductMaterial).HasMaxLength(100);
 
                 entity.Property(e => e.ProductName).HasMaxLength(255);
+
+                entity.Property(e => e.Sale).HasColumnType("decimal(10, 0)");
 
                 entity.HasOne(d => d.BirdType)
                     .WithMany(p => p.Products)

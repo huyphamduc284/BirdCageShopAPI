@@ -17,7 +17,7 @@ namespace BirdCageShop.Presentation.Controllers
 
         private IOrderService _orderService;
 
-         public OrderController(IOrderService orderService)
+        public OrderController(IOrderService orderService)
         {
             _orderService = orderService;
         }
@@ -109,6 +109,17 @@ namespace BirdCageShop.Presentation.Controllers
                 return NotFound("Fail To Update Order");
             }
             return orderUpdated;
+        }
+        [MapToApiVersion("1")]
+        [HttpPut("orderId/assigned-employee")]
+        public ActionResult<OrderViewModel> AssignEmployee(AssignEmpRequestModel assignEmpRequest)
+        {
+            var assignEmp = _orderService.AssignEmployee(assignEmpRequest);
+            if(assignEmp == null)
+            {
+                return NotFound("Cannot Assign this employee");
+            }
+            return assignEmp;
         }
     }
 

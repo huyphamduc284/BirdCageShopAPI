@@ -61,6 +61,8 @@ namespace BirdCageShop.BusinessLogic.Services
             product.ProductMaterial = productUpdate.ProductMaterial;
             product.BirdCageType = productUpdate.BirdCageType;
             product.Image = productUpdate.Image;
+            product.Color = productUpdate.Color;
+            product.Sale = productUpdate.Sale;
     
 
             _productRepository.Update(product);

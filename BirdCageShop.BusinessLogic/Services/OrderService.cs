@@ -15,6 +15,8 @@ namespace BirdCageShop.BusinessLogic.Services
         public OrderViewModel CreateOrder(CreateOrderRequestModel orderCreate/*, List<CreateOrderDetailRequestModel> orderDetails*/);
         public OrderViewModel UpdateOrder(UpdateOrderRequestModel orderUpdate);
         public OrderViewModel UpdateOrderById(UpdateOrderByIdRequestModel orderStatusUpdate);
+        public OrderViewModel AssignEmployee(AssignEmpRequestModel assignEmpRequest);
+
 
         public bool DeleteOrder(string idTmp);
         public List<OrderViewModel> GetAll();
@@ -132,6 +134,19 @@ namespace BirdCageShop.BusinessLogic.Services
             else if (orderStatusUpdate.OrderStatus.Equals("Cancelled")){
                 order.OrderStatus = (int?)OrderStatusEnum.Cancelled;
             }
+            _orderRepository.Update(order);
+            _orderRepository.Save();
+
+            return _mapper.Map<OrderViewModel>(order);
+        }
+
+        public OrderViewModel AssignEmployee(AssignEmpRequestModel assignEmpRequest)
+        {
+            var order = _orderRepository.Get().SingleOrDefault(x => x.OrderId.Equals(assignEmpRequest.OrderId));
+            if (order == null) return null;
+         
+            order.AssignedEmp = assignEmpRequest.UserId;
+
             _orderRepository.Update(order);
             _orderRepository.Save();
 

@@ -22,6 +22,7 @@ namespace BirdCageShop.DataAccess.Models
         public string? Country { get; set; }
         public string? Method { get; set; }
         public string? Comment { get; set; }
+        public string? AssignedEmp { get; set; }
 
         public virtual User? User { get; set; }
         public virtual Payment? Payment { get; set; }
