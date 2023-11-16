@@ -58,7 +58,7 @@ namespace BirdCageShop.BusinessLogic.Services
             
             user.UpdateTime = DateTime.Now;
             user.Username = userUpdate.Username;
-            user.Password = userUpdate.Password;
+            user.Password = PasswordHasher.HashPassword(userUpdate.Password);
             user.FirstName = userUpdate.FirstName;
             user.LastName = userUpdate.LastName;    
             user.PhoneNumber= userUpdate.PhoneNumber;
