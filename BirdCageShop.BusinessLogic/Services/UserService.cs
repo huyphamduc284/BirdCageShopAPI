@@ -5,10 +5,6 @@ using BirdCageShop.DataAccess.Models;
 using BirdCageShop.DataAccess.Repositories;
 using Ecommerce.BusinessLogic.RequestModels.User;
 using Ecommerce.BusinessLogic.ViewModels;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Win32;
-using System.Security.Claims;
 using static BirdCageShop.BusinessLogic.Services.LoginService;
 
 namespace BirdCageShop.BusinessLogic.Services 
@@ -108,12 +104,7 @@ namespace BirdCageShop.BusinessLogic.Services
             _userRepository.Save();
             return true;
         }
-        /*  public string GetCurrentUserId()
- {
-     // Get current user's ID from the HttpContext or wherever the user information is stored
-     var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-     return userId;
- }*/
+      
 
     }
 

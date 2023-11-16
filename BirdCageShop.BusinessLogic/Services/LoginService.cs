@@ -3,10 +3,7 @@ using BirdCageShop.DataAccess.Models;
 using BirdCageShop.DataAccess.Repositories;
 using Ecommerce.BusinessLogic.RequestModels.User;
 using Ecommerce.BusinessLogic.ViewModels;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
 using System.Security.Cryptography;
 
 namespace BirdCageShop.BusinessLogic.Services
