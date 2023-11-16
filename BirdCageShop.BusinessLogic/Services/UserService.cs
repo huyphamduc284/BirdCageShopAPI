@@ -61,6 +61,7 @@ namespace BirdCageShop.BusinessLogic.Services
             user.Email = userUpdate.Email;
             user.Address = userUpdate.Address;
             user.Image = userUpdate.Image;
+            user.RoleId = userUpdate.RoleId;
 
             _userRepository.Update(user);
             _userRepository.Save();
