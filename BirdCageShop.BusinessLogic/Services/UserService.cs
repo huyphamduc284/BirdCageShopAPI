@@ -6,7 +6,10 @@ using BirdCageShop.DataAccess.Repositories;
 using Ecommerce.BusinessLogic.RequestModels.User;
 using Ecommerce.BusinessLogic.ViewModels;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Win32;
 using System.Security.Claims;
+using static BirdCageShop.BusinessLogic.Services.LoginService;
 
 namespace BirdCageShop.BusinessLogic.Services 
 {
@@ -40,9 +43,10 @@ namespace BirdCageShop.BusinessLogic.Services
             user.UserId = Guid.NewGuid().ToString();
             user.Status = (int?)UserStatusEnum.Active;
             user.CreateTime = DateTime.Now;
-
+            user.Password = PasswordHasher.HashPassword(userCreate.Password);
             _userRepository.Create(user);
             _userRepository.Save();
+            
 
             return _mapper.Map<UserViewModel>(user);
         }

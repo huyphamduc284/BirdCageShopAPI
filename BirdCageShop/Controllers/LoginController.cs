@@ -23,7 +23,7 @@ namespace BirdCageShop.Presentation.Controllers
 
         [MapToApiVersion("1")]
         [HttpPost]
-        public ActionResult<LoginViewModel> CreateUser(LoginRequestModel loginRequest)
+        public ActionResult<LoginViewModel> Authenticate(LoginRequestModel loginRequest)
         {
             try
             {
