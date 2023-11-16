@@ -15,7 +15,7 @@ namespace BirdCageShop.BusinessLogic.AutoMapperModule
             mc.CreateMap<Order, CreateOrderRequestModel>().ReverseMap();
             mc.CreateMap<Order, UpdateOrderRequestModel>().ReverseMap();
             mc.CreateMap<Order, UpdateOrderByIdRequestModel>().ReverseMap();
-            mc.CreateMap<Order, AssignEmpRequestModel>().ReverseMap();
+            mc.CreateMap<Order, AssignEmpRequestModel   >().ReverseMap();
 
 
         }

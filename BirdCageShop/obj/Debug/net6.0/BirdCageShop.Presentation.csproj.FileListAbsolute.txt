@@ -81,3 +81,5 @@ C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Debug\ne
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Debug\net6.0\BirdCageShop.Presentation.pdb
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Debug\net6.0\BirdCageShop.Presentation.genruntimeconfig.cache
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Debug\net6.0\ref\BirdCageShop.Presentation.dll
+C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\bin\Debug\net6.0\Humanizer.dll
+C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll

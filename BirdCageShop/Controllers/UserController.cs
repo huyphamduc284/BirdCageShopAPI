@@ -71,6 +71,18 @@ namespace BirdCageShop.Presentation.Controllers
             }
             return check;
         }
+        [MapToApiVersion("1")]
+        [HttpDelete("userid")]
+        public ActionResult<bool> RemoveUser(string userid)
+        {
+            var check = _userService.RemoveUser(userid);
+
+            if (check == false)
+            {
+                return NotFound("");
+            }
+            return check;
+        }
 
         [MapToApiVersion("1")]
         [HttpPut]

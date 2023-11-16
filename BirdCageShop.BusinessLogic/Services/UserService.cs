@@ -15,9 +15,11 @@ namespace BirdCageShop.BusinessLogic.Services
         public UserViewModel CreateUser(CreateUserRequestModel userCreate);
         public UserViewModel UpdateUser(UpdateUserRequestModel userUpdate);
         public bool DeleteUser(string idTmp);
+        public bool RemoveUser(string userid);
         public List<UserViewModel> GetAll();
         public UserViewModel GetById(string idTmp);
        /* public string GetCurrentUserId();*/
+
     }
 
     public class UserService : IUserService {
@@ -37,7 +39,6 @@ namespace BirdCageShop.BusinessLogic.Services
             var user = _mapper.Map<User>(userCreate);
             user.UserId = Guid.NewGuid().ToString();
             user.Status = (int?)UserStatusEnum.Active;
-            user.RoleId = (int?)UserRoleEnum.Customer;
             user.CreateTime = DateTime.Now;
 
             _userRepository.Create(user);
@@ -91,12 +92,23 @@ namespace BirdCageShop.BusinessLogic.Services
             var user = _userRepository.Get().SingleOrDefault(x => x.UserId.Equals(idTmp));
             return _mapper.Map<UserViewModel>(user);
         }
-      /*  public string GetCurrentUserId()
+
+        public bool RemoveUser(string userid)
         {
-            // Get current user's ID from the HttpContext or wherever the user information is stored
-            var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            return userId;
-        }*/
+            var user = _userRepository.Get().SingleOrDefault(x => x.UserId.Equals(userid));
+
+            if (user == null) return false;
+     
+            _userRepository.Delete(user);
+            _userRepository.Save();
+            return true;
+        }
+        /*  public string GetCurrentUserId()
+ {
+     // Get current user's ID from the HttpContext or wherever the user information is stored
+     var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+     return userId;
+ }*/
 
     }
 
