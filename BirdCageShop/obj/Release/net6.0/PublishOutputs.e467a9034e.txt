@@ -9,6 +9,8 @@ C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Mvc.Versioning.dll
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\Microsoft.Data.SqlClient.dll
@@ -28,6 +30,8 @@ C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\Microsoft.OpenApi.dll
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
+C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.dll
+C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.Bson.dll
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\NTQ.Sdk.Core.dll
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\yoga\Desktop\FU\Kỳ 5\SWP391\BirdCageShopAPI\BirdCageShop\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll

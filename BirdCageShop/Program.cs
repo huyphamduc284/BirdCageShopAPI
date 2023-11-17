@@ -40,11 +40,10 @@ builder.Services.AddCors(option =>
                             policy.WithOrigins("https://localhost:3000").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
                         });
 });
-builder.Services.AddControllers()
-     .AddJsonOptions(options =>
-     {
-         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
-     });
+builder.Services.AddControllersWithViews()
+    .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
 
 var app = builder.Build();
 
