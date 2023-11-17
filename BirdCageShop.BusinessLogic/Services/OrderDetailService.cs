@@ -4,6 +4,9 @@ using BirdCageShop.DataAccess.Models;
 using BirdCageShop.DataAccess.Repositories;
 using Ecommerce.BusinessLogic.RequestModels.OrderDetail;
 using Ecommerce.BusinessLogic.ViewModels;
+using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace BirdCageShop.BusinessLogic.Services 
 {
@@ -13,19 +16,24 @@ namespace BirdCageShop.BusinessLogic.Services
         public OrderDetailViewModel UpdateOrderDetail(UpdateOrderDetailRequestModel orderdetailUpdate);
         public bool DeleteOrderDetail(string idTmp);
         public bool DeleteByOrderId(string idTmp);
+        
 
         public List<OrderDetailViewModel> GetAll();
         public OrderDetailViewModel GetById(string idTmp);
+     
+
     }
 
     public class OrderDetailService : IOrderDetailService {
 
       private readonly IOrderDetailRepository _orderdetailRepository;
+        private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
 
-        public OrderDetailService(IOrderDetailRepository orderdetailRepository, IMapper mapper)
+        public OrderDetailService(IOrderDetailRepository orderdetailRepository,IProductRepository productRepository ,IMapper mapper)
         {
             _orderdetailRepository = orderdetailRepository;
+            _productRepository = productRepository;
             _mapper = mapper;
         }
 
@@ -77,7 +85,13 @@ namespace BirdCageShop.BusinessLogic.Services
 
         public OrderDetailViewModel GetById(string idTmp) 
         {
-            var orderDetail = _orderdetailRepository.Get().SingleOrDefault(x => x.OrderDetailId.Equals(idTmp));
+            var orderDetail = _orderdetailRepository.Get().Include(od => od.Product).SingleOrDefault(x => x.OrderDetailId.Equals(idTmp));
+            var jsonOptions = new JsonSerializerOptions
+            {
+                ReferenceHandler = ReferenceHandler.Preserve,
+            };
+
+            var json = JsonSerializer.Serialize(orderDetail, jsonOptions);
             return _mapper.Map<OrderDetailViewModel>(orderDetail);
         }
 
@@ -89,6 +103,8 @@ namespace BirdCageShop.BusinessLogic.Services
             _orderdetailRepository.Save();
             return true;
         }
+
+       
     }
 
 }

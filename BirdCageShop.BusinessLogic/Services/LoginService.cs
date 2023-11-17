@@ -2,7 +2,7 @@
 using BirdCageShop.DataAccess.Models;
 using BirdCageShop.DataAccess.Repositories;
 using Ecommerce.BusinessLogic.RequestModels.User;
-using Ecommerce.BusinessLogic.ViewModels;
+using Ecommerce.BusinessLogic.ViewModels;   
 using Microsoft.Extensions.Options;
 using System.Security.Cryptography;
 

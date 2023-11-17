@@ -3,6 +3,7 @@ using BirdCageShop.Presentation.AutoMapperConfig;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,6 +40,11 @@ builder.Services.AddCors(option =>
                             policy.WithOrigins("https://localhost:3000").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
                         });
 });
+builder.Services.AddControllers()
+     .AddJsonOptions(options =>
+     {
+         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+     });
 
 var app = builder.Build();
 
