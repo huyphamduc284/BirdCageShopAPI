@@ -26,13 +26,17 @@ namespace BirdCageShop.Presentation.Controllers
         [HttpPost]
         public ActionResult<OrderViewModel> CreateOrder(CreateOrderRequestModel orderCreate)
         {
-            var orderCreated = _orderService.CreateOrder(orderCreate);
+            try {
+                var orderCreated = _orderService.CreateOrder(orderCreate);
 
-            if (orderCreated == null)
-            {
-                return NotFound("Fail to Create Order");
+                if (orderCreated == null)
+                {
+                    return NotFound("Fail to Create Order");
+                }
+                return orderCreated;
             }
-            return orderCreated;
+            catch (Exception ex) { return NotFound(ex.Message); }
+          
         }
 
         [MapToApiVersion("1")]
@@ -102,30 +106,37 @@ namespace BirdCageShop.Presentation.Controllers
         [HttpPut]
         public ActionResult<OrderViewModel> UpdateOrder(UpdateOrderRequestModel orderCreate)
         {
-            var orderUpdated = _orderService.UpdateOrder(orderCreate);
+            try {  
+                var orderUpdated = _orderService.UpdateOrder(orderCreate);
 
-            if (orderUpdated == null)
-            {
-                return NotFound("Fail To Update Order");
-            }
-            return orderUpdated;
+                if (orderUpdated == null)
+                {
+                    return NotFound("Fail To Update Order");
+                }
+                return orderUpdated;
+            }catch (Exception ex) { return NotFound(ex.Message); }
+           
         }
         [MapToApiVersion("1")]
         [HttpPut("orderId")]
         public ActionResult<OrderViewModel> UpdateOrderById(UpdateOrderByIdRequestModel orderStatusUpdate)
         {
-            var orderUpdated = _orderService.UpdateOrderById(orderStatusUpdate);
+            try { 
+                var orderUpdated = _orderService.UpdateOrderById(orderStatusUpdate);
 
-            if (orderUpdated == null)
-            {
-                return NotFound("Fail To Update Order");
-            }
-            return orderUpdated;
+                if (orderUpdated == null)
+                {
+                    return NotFound("Fail To Update Order");
+                }
+                return orderUpdated; 
+            } catch (Exception ex) { return NotFound(ex.Message); }
+           
         }
         [MapToApiVersion("1")]
         [HttpPut("orderId/assigned-employee")]
         public ActionResult<OrderViewModel> AssignEmployee(AssignEmpRequestModel assignEmpRequest)
         {
+
             var assignEmp = _orderService.AssignEmployee(assignEmpRequest);
             if(assignEmp == null)
             {

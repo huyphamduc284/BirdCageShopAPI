@@ -30,7 +30,7 @@ namespace BirdCageShop.Presentation.Controllers
 
             if (productCreated == null)
             {
-                return NotFound("");
+                return NotFound("Product invalid");
             }
             return productCreated;
         }
@@ -43,7 +43,7 @@ namespace BirdCageShop.Presentation.Controllers
 
             if (productList == null)
             {
-                return NotFound("");
+                return NotFound("Product not found");
             }
             return productList;
         }
@@ -56,7 +56,7 @@ namespace BirdCageShop.Presentation.Controllers
 
             if (productDetail == null)
             {
-                return NotFound("");
+                return NotFound("Product not found");
             }
             return productDetail;
         }
@@ -69,7 +69,7 @@ namespace BirdCageShop.Presentation.Controllers
 
             if (quantity == null)
             {
-                return NotFound("");
+                return NotFound("Product not found");
             }
             return quantity;
         }
@@ -82,7 +82,7 @@ namespace BirdCageShop.Presentation.Controllers
 
             if (productList == null)
             {
-                return NotFound("");
+                return NotFound("Product not found");
             }
             return productList;
         }
@@ -94,7 +94,7 @@ namespace BirdCageShop.Presentation.Controllers
 
             if (productList == null)
             {
-                return NotFound("");
+                return NotFound("Product not found");
             }
             return productList;
         }
@@ -107,7 +107,7 @@ namespace BirdCageShop.Presentation.Controllers
 
             if (check == false)
             {
-                return NotFound("");
+                return NotFound("Fail to delete Bird Cage");
             }
             return check;
         }
@@ -120,7 +120,7 @@ namespace BirdCageShop.Presentation.Controllers
 
             if (productUpdated == null)
             {
-                return NotFound("");
+                return NotFound("Fail to update Bird Cage");
             }
             return productUpdated;
         }
