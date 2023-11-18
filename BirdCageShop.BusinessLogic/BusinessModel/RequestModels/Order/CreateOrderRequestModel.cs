@@ -1,5 +1,7 @@
 
 
+using Ecommerce.BusinessLogic.RequestModels.OrderDetail;
+
 namespace Ecommerce.BusinessLogic.RequestModels.Order 
 {
 
@@ -13,6 +15,9 @@ namespace Ecommerce.BusinessLogic.RequestModels.Order
         public string? Country { get; set; }
         public string? Method { get; set; }
         public string? Comment { get; set; }
+        public List<CreateOrderDetailRequestModel> orderDetail { get; set; }
+  
+
     }
 
 }

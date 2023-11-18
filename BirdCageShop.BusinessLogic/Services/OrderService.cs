@@ -42,7 +42,7 @@ namespace BirdCageShop.BusinessLogic.Services
             _orderDetailService = orderDetailService;
         }
 
-        public OrderViewModel CreateOrder(CreateOrderRequestModel orderCreate/*, List<CreateOrderDetailRequestModel> orderDetails*/)
+        public OrderViewModel CreateOrder(CreateOrderRequestModel orderCreate)
         {
             var order = _mapper.Map<Order>(orderCreate);
             var processingTimeInDay = 3;
@@ -56,14 +56,14 @@ namespace BirdCageShop.BusinessLogic.Services
             _orderRepository.Create(order);
             _orderRepository.Save();
 
-            /* foreach (var product in orderDetails)
+            foreach (var product in orderCreate.orderDetail)
             {
                 var orderDetail = _mapper.Map<OrderDetail>(product);
 
                 _orderDetailRepository.Create(orderDetail);
                 _orderDetailRepository.Save();
-            }*/
-        
+            }
+
 
             return _mapper.Map<OrderViewModel>(order);
         }
