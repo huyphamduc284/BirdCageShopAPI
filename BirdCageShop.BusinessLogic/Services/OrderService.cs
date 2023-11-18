@@ -45,13 +45,11 @@ namespace BirdCageShop.BusinessLogic.Services
         public OrderViewModel CreateOrder(CreateOrderRequestModel orderCreate)
         {
             var order = _mapper.Map<Order>(orderCreate);
-            var processingTimeInDay = 3;
-            var expectedDeliveryDate = DateTime.Now;
 
             order.OrderId = Guid.NewGuid().ToString();
             order.OrderDate = DateTime.Now;        
             order.OrderStatus = (int?)OrderStatusEnum.Pending;
-            order.ExpectedDeliveryDate = expectedDeliveryDate;
+            order.ExpectedDeliveryDate = DateTime.Now.AddDays(2);
 
             _orderRepository.Create(order);
             _orderRepository.Save();
