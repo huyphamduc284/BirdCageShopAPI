@@ -34,36 +34,50 @@ namespace BirdCageShop.BusinessLogic.Services
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
-        public OrderService(IOrderRepository orderRepository, IMapper mapper, IUserService userService, IOrderDetailService orderDetailService)
+        public OrderService(IOrderRepository orderRepository, IMapper mapper, IUserService userService, IOrderDetailService orderDetailService, IOrderDetailRepository orderDetailRepository)
         {
             _orderRepository = orderRepository;
             _mapper = mapper;
             _userService = userService;
             _orderDetailService = orderDetailService;
+            _orderDetailRepository = orderDetailRepository;
         }
 
         public OrderViewModel CreateOrder(CreateOrderRequestModel orderCreate)
         {
-            var order = _mapper.Map<Order>(orderCreate);
-
-            order.OrderId = Guid.NewGuid().ToString();
-            order.OrderDate = DateTime.Now;        
-            order.OrderStatus = (int?)OrderStatusEnum.Pending;
-            order.ExpectedDeliveryDate = DateTime.Now.AddDays(2);
-
-            _orderRepository.Create(order);
-            _orderRepository.Save();
-
-            foreach (var product in orderCreate.orderDetail)
+            try
             {
-                var orderDetail = _mapper.Map<OrderDetail>(product);
+                var order = _mapper.Map<Order>(orderCreate);
 
-                _orderDetailRepository.Create(orderDetail);
-                _orderDetailRepository.Save();
+                order.OrderId = Guid.NewGuid().ToString();
+                order.OrderDate = DateTime.Now;
+                order.OrderStatus = (int?)OrderStatusEnum.Pending;
+                order.ExpectedDeliveryDate = DateTime.Now.AddDays(2);
+
+                _orderRepository.Create(order);
+                _orderRepository.Save();
+
+                foreach (var cart in orderCreate.orderDetail.Cart)
+                {
+                    var orderDetail = _mapper.Map<OrderDetail>(orderCreate.orderDetail);
+
+                    orderDetail.OrderDetailId = Guid.NewGuid().ToString();
+                    orderDetail.OrderId = order.OrderId;
+                    orderDetail.ProductId = cart.ProductId;
+                    orderDetail.Quantity = cart.CartQuantity;
+
+                    _orderDetailRepository.Create(orderDetail);
+                    _orderDetailRepository.Save();
+                }
+               
+
+                return _mapper.Map<OrderViewModel>(order);
             }
-
-
-            return _mapper.Map<OrderViewModel>(order);
+            catch(Exception ex)
+            {
+               throw ex;
+            }
+            
         }
 
         public OrderViewModel UpdateOrder(UpdateOrderRequestModel orderUpdate) 
