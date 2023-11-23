@@ -12,6 +12,7 @@ namespace BirdCageShop.BusinessLogic.Services
         public ReviewViewModel CreateReview(CreateReviewRequestModel reviewCreate);
         public ReviewViewModel UpdateReview(UpdateReviewRequestModel reviewUpdate);
         public List<ReviewViewModel> GetAll();
+        public List<ReviewViewModel> GetByProductId(string productId);
   
 
     }
@@ -34,6 +35,14 @@ namespace BirdCageShop.BusinessLogic.Services
 
 
             return _mapper.Map<ReviewViewModel>(review);
+        }
+
+        public List<ReviewViewModel> GetByProductId(string productId)
+        {
+            var listReview = _reviewRepository.Get().Where(r => r.ProductId.Equals(productId)).ToList();
+            if (listReview == null) return null;
+
+            return _mapper.Map<List<ReviewViewModel>>(listReview);
         }
 
         public List<ReviewViewModel> GetAll()

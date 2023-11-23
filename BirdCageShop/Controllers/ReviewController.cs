@@ -46,6 +46,18 @@ namespace BirdCageShop.Presentation.Controllers
             }
             return reviewList;
         }
+        [MapToApiVersion("1")]
+        [HttpGet("productId")]
+        public ActionResult<List<ReviewViewModel>> GetByProductId(string productId)
+        {
+            var reviewList = _reviewService.GetByProductId(productId);
+
+            if (reviewList == null)
+            {
+                return NotFound("Not Found");
+            }
+            return reviewList;
+        }
 
 
     }
