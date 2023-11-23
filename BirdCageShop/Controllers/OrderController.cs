@@ -53,7 +53,7 @@ namespace BirdCageShop.Presentation.Controllers
         }
 
         [MapToApiVersion("1")]
-        [HttpGet("idTmp")]
+        [HttpGet("orderId")]
         public ActionResult<OrderViewModel> GetById(string idTmp)
         {
             var orderDetail = _orderService.GetById(idTmp);
@@ -66,7 +66,7 @@ namespace BirdCageShop.Presentation.Controllers
         }
         [MapToApiVersion("1")]
         [HttpGet("userId")]
-        public ActionResult<OrderViewModel> GetByUserId(string idTmp)
+        public ActionResult<List<OrderViewModel>> GetByUserId(string idTmp)
         {
             var orderDetail = _orderService.GetByUserId(idTmp);
 
