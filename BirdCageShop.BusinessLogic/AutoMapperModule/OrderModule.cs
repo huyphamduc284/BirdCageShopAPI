@@ -11,7 +11,7 @@ namespace BirdCageShop.BusinessLogic.AutoMapperModule
     {
         public static void ConfigOrderModule(this IMapperConfigurationExpression mc)
         {
-            mc.CreateMap<Order, OrderViewModel>().ReverseMap();
+            mc.CreateMap<Order, OrderViewModel>().ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.Username)).ReverseMap();
             mc.CreateMap<Order, CreateOrderRequestModel>().ReverseMap();
             mc.CreateMap<Order, UpdateOrderRequestModel>().ReverseMap();
             mc.CreateMap<Order, UpdateOrderByIdRequestModel>().ReverseMap();

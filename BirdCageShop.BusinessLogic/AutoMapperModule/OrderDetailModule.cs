@@ -14,7 +14,7 @@ namespace BirdCageShop.BusinessLogic.AutoMapperModule
         {
             mc.CreateMap<OrderDetail, OrderDetailViewModel>().ReverseMap()/*.ForMember(dest => dest.Product, opt => opt.MapFrom(src => src.Product))*/;
 
-            mc.CreateMap<OrderDetail, CreateOrderDetailRequestModel>().ForMember(o => o.Cart, o => o.Ignore()).ReverseMap();
+            mc.CreateMap<OrderDetail, List<CreateOrderDetailRequestModel>>()/*.ForMember(o => o.Cart, o => o.Ignore())*/.ReverseMap();
             mc.CreateMap<OrderDetail, UpdateOrderDetailRequestModel>().ReverseMap();
             mc.CreateMap<OrderDetail, CreateCartRequestModel>().ReverseMap()/*
                 .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductId))

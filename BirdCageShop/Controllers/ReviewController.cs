@@ -34,8 +34,20 @@ namespace BirdCageShop.Presentation.Controllers
             }
             return reviewtCreated;
         }
+        [MapToApiVersion("1")]
+        [HttpGet]
+        public ActionResult<List<ReviewViewModel>> GetAll()
+        {
+            var reviewList = _reviewService.GetAll();
 
-       
+            if (reviewList == null)
+            {
+                return NotFound("Not Found");
+            }
+            return reviewList;
+        }
+
+
     }
 
 }

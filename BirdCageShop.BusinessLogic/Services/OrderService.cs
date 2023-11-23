@@ -7,6 +7,7 @@ using Ecommerce.BusinessLogic.RequestModels.Order;
 using Ecommerce.BusinessLogic.RequestModels.OrderDetail;
 using Ecommerce.BusinessLogic.RequestModels.Product;
 using Ecommerce.BusinessLogic.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace BirdCageShop.BusinessLogic.Services 
 {
@@ -57,7 +58,7 @@ namespace BirdCageShop.BusinessLogic.Services
                 _orderRepository.Create(order);
                 _orderRepository.Save();
 
-                foreach (var cart in orderCreate.orderDetail.Cart)
+                foreach (var cart in orderCreate.orderDetail)
                 {
                     var orderDetail = _mapper.Map<OrderDetail>(orderCreate.orderDetail);
 
@@ -112,7 +113,7 @@ namespace BirdCageShop.BusinessLogic.Services
 
         public List<OrderViewModel> GetAll() 
         {
-           var orders = _orderRepository.Get().ToList();
+           var orders = _orderRepository.Get().Include(o => o.User).ToList();
             return _mapper.Map<List<OrderViewModel>>(orders);
         }
 

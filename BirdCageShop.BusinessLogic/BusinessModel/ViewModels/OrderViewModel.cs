@@ -17,6 +17,7 @@ namespace Ecommerce.BusinessLogic.ViewModels
         public string? Method { get; set; }
         public string? Comment { get; set; }
         public string? AssignedEmp { get; set; }
+        public string UserName { get; set; }
     }
 
 }

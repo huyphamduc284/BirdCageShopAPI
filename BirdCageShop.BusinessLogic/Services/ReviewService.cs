@@ -10,7 +10,8 @@ namespace BirdCageShop.BusinessLogic.Services
     public interface IReviewService
     {
         public ReviewViewModel CreateReview(CreateReviewRequestModel reviewCreate);
-        public ReviewViewModel UpdateProduct(UpdateReviewRequestModel reviewUpdate);
+        public ReviewViewModel UpdateReview(UpdateReviewRequestModel reviewUpdate);
+        public List<ReviewViewModel> GetAll();
   
 
     }
@@ -35,7 +36,15 @@ namespace BirdCageShop.BusinessLogic.Services
             return _mapper.Map<ReviewViewModel>(review);
         }
 
-        public ReviewViewModel UpdateProduct(UpdateReviewRequestModel reviewUpdate)
+        public List<ReviewViewModel> GetAll()
+        {
+            var listReview = _reviewRepository.Get().ToList();
+            if (listReview == null) return null;
+
+            return _mapper.Map<List<ReviewViewModel>>(listReview);
+        }
+
+        public ReviewViewModel UpdateReview(UpdateReviewRequestModel reviewUpdate)
         {
             throw new NotImplementedException();
         }
