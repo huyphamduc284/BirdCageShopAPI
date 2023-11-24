@@ -134,7 +134,7 @@ namespace BirdCageShop.BusinessLogic.Services
 
         public OrderViewModel UpdateOrderById(UpdateOrderByIdRequestModel orderStatusUpdate)
         {
-            var order = _orderRepository.Get().SingleOrDefault(x => x.OrderId.Equals(orderStatusUpdate.OrderId));
+            var order = _orderRepository.Get().Include(o => o.User ).SingleOrDefault(x => x.OrderId.Equals(orderStatusUpdate.OrderId));
             if (orderStatusUpdate.OrderStatus.Equals("Pending")){
                 order.OrderStatus = (int?)OrderStatusEnum.Pending;
             }else if (orderStatusUpdate.OrderStatus.Equals("Processing")){
