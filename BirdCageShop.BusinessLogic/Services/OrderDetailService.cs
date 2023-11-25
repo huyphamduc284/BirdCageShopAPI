@@ -20,7 +20,8 @@ namespace BirdCageShop.BusinessLogic.Services
 
         public List<OrderDetailViewModel> GetAll();
         public OrderDetailViewModel GetById(string idTmp);
-        public List<OrderDetailViewModel> GetDetailByOrder(string orderId);
+        public List<OrderDetailViewModel> GetDetailByOrder(string orderId); 
+        public List<OrderDetailViewModel> GetOrderDetailByUser(string userId); 
 
 
 
@@ -118,6 +119,11 @@ namespace BirdCageShop.BusinessLogic.Services
 
             var json = JsonSerializer.Serialize(orderDetail, jsonOptions);
             return _mapper.Map<List<OrderDetailViewModel>>(orderDetail);
+        }
+
+        public List<OrderDetailViewModel> GetOrderDetailByUser(string userId)
+        {
+            throw new NotImplementedException();
         }
     }
 

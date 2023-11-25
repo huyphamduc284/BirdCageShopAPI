@@ -15,7 +15,7 @@ namespace BirdCageShop.Presentation.Controllers
     public class ReviewController : ControllerBase
     {
 
-        private IReviewService _reviewService;
+        private IReviewService  _reviewService;
 
         public ReviewController(IReviewService reviewService)
         {
@@ -58,6 +58,19 @@ namespace BirdCageShop.Presentation.Controllers
             }
             return reviewList;
         }
+        [MapToApiVersion("1")]
+        [HttpDelete("reviewId")]
+        public ActionResult<bool> DeleteReview(string reviewId)
+        {
+            var check = _reviewService.DeleteReview(reviewId);
+
+            if (check == false)
+            {
+                return NotFound("Not Found");
+            }
+            return check;
+        }
+
 
 
     }
