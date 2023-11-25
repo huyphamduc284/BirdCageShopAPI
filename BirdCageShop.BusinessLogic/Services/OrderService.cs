@@ -30,18 +30,19 @@ namespace BirdCageShop.BusinessLogic.Services
     public class OrderService : IOrderService {
 
         private readonly IOrderRepository _orderRepository;
-        private readonly IOrderDetailRepository _orderDetailRepository;
+        private readonly IOrderDetailRepository _orderDetailRepository; 
+        private readonly IProductRepository _productRepository;
         private readonly IOrderDetailService _orderDetailService;
-        private readonly IUserService _userService;
+ 
         private readonly IMapper _mapper;
 
-        public OrderService(IOrderRepository orderRepository, IMapper mapper, IUserService userService, IOrderDetailService orderDetailService, IOrderDetailRepository orderDetailRepository)
+        public OrderService(IOrderRepository orderRepository, IMapper mapper, IUserService userService, IOrderDetailService orderDetailService, IOrderDetailRepository orderDetailRepository, IProductService productService,IProductRepository productRepository)
         {
-            _orderRepository = orderRepository;
             _mapper = mapper;
-            _userService = userService;
+            _orderRepository = orderRepository; 
             _orderDetailService = orderDetailService;
-            _orderDetailRepository = orderDetailRepository;
+            _orderDetailRepository = orderDetailRepository;       
+            _productRepository = productRepository;
         }
 
         public OrderViewModel CreateOrder(CreateOrderRequestModel orderCreate)
@@ -126,7 +127,7 @@ namespace BirdCageShop.BusinessLogic.Services
 
         public List<OrderViewModel> GetByUserId(string userId)
         {
-            var order = _orderRepository.Get().Where(x => x.UserId.Equals(userId)).ToList();
+            var order = _orderRepository.Get().Include(o => o.User).Where(x => x.UserId.Equals(userId)).ToList();
             if (order == null) return null;
 
             return _mapper.Map<List<OrderViewModel>>(order);
@@ -145,6 +146,15 @@ namespace BirdCageShop.BusinessLogic.Services
             }
             else if (orderStatusUpdate.OrderStatus.Equals("Delivered")){
                 order.OrderStatus = (int?)OrderStatusEnum.Delivered;
+                var orderDetail = _orderDetailService.GetDetailByOrder(order.OrderId);
+                foreach (var item in orderDetail)
+                {
+                    var product = _productRepository.Get().SingleOrDefault(x => x.ProductId.Equals(item.ProductId));
+                    product.Quantity -= item.Quantity;
+                    _productRepository.Update(product);
+                    _productRepository.Save();
+
+                }
             }
             else if (orderStatusUpdate.OrderStatus.Equals("Cancelled")){
                 order.OrderStatus = (int?)OrderStatusEnum.Cancelled;
@@ -157,7 +167,7 @@ namespace BirdCageShop.BusinessLogic.Services
 
         public OrderViewModel AssignEmployee(AssignEmpRequestModel assignEmpRequest)
         {
-            var order = _orderRepository.Get().SingleOrDefault(x => x.OrderId.Equals(assignEmpRequest.OrderId));
+            var order = _orderRepository.Get().Include(o => o.User).SingleOrDefault(x => x.OrderId.Equals(assignEmpRequest.OrderId));
             if (order == null) return null;
          
             order.AssignedEmp = assignEmpRequest.UserId;

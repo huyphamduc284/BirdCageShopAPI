@@ -83,7 +83,7 @@ namespace BirdCageShop.BusinessLogic.Services
 
         public List<OrderDetailViewModel> GetAll() 
         {
-           var orderDetails = _orderdetailRepository.Get().ToList();
+           var orderDetails = _orderdetailRepository.Get().Include(o => o.Product).ToList();
             return _mapper.Map<List<OrderDetailViewModel>>(orderDetails);
         }
 
